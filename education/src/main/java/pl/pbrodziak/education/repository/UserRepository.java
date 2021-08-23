@@ -6,5 +6,5 @@ import pl.pbrodziak.education.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-
+    User getUserByEmail(String email);
 }

@@ -1,16 +1,16 @@
 package pl.pbrodziak.education.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.pbrodziak.education.entity.User;
+import pl.pbrodziak.education.entity.dto.UserDto;
 import pl.pbrodziak.education.service.UserService;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("user")
+@CrossOrigin("http://localhost:3000")
 public class UserController {
 
     private final UserService userService;
@@ -22,6 +22,11 @@ public class UserController {
     @GetMapping("all")
     public List<User> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @PostMapping("add")
+    public User addUser(@RequestBody UserDto userDto){
+        return userService.addUser(userDto);
     }
 
 }
