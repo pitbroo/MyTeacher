@@ -15,7 +15,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int courseId;
     @Column
-    private String instructorID;
+    private String instructorId;
     @Column
     private String courseName;
     @Column
