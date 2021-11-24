@@ -37,7 +37,7 @@ public class User implements Serializable {
     private boolean isActive;
     private boolean isNotLocked;
     private String[] autorities;
-     private String[] role;
+    private String[] role;
 
     @ManyToOne
     private EmailNotification emailNotification;
