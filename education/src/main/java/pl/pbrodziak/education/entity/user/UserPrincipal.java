@@ -1,13 +1,12 @@
 package pl.pbrodziak.education.entity.user;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.stream.Collectors;
-
 import static java.util.Arrays.stream;
+
 
 public class UserPrincipal implements UserDetails {
 
@@ -20,7 +19,7 @@ public class UserPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //do analizy
-        return (Collection<? extends GrantedAuthority>) stream(this.user.getAutorities()).map(SimpleDateFormat::new).collect(Collectors.toList());
+        return stream(this.user.getAutorities()).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
     @Override
