@@ -34,9 +34,11 @@ public class User implements Serializable {
     private Date lastLoginDateDisplay;
     @Column
     private Date joinDate;
+    private boolean isActive;
+    private boolean isNotLocked;
+    private String[] autorities;
+    private String[] role;
 
-    //private String[] Autorities
-    //private String[] Role
     @ManyToOne
     private EmailNotification emailNotification;
     @ManyToMany()
