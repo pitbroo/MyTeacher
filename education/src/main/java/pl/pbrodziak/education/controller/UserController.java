@@ -1,7 +1,7 @@
 package pl.pbrodziak.education.controller;
 
 import org.springframework.web.bind.annotation.*;
-import pl.pbrodziak.education.entity.User;
+import pl.pbrodziak.education.entity.user.User;
 import pl.pbrodziak.education.entity.dto.UserDto;
 import pl.pbrodziak.education.service.UserService;
 

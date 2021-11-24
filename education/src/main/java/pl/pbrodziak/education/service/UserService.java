@@ -1,7 +1,7 @@
 package pl.pbrodziak.education.service;
 
 
-import pl.pbrodziak.education.entity.User;
+import pl.pbrodziak.education.entity.user.User;
 import pl.pbrodziak.education.entity.dto.UserDto;
 
 import java.util.List;

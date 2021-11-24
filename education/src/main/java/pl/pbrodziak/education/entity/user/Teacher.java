@@ -2,9 +2,11 @@ package pl.pbrodziak.education.entity.user;
 
 
 import lombok.Data;
-import pl.pbrodziak.education.entity.User;
+
+import javax.persistence.Entity;
 
 @Data
+@Entity
 public class Teacher extends User {
 
 }

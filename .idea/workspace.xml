@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="34999fda-fe65-4c2b-87f8-963b392090d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/dto/MessageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/point/Piot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/education/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/EmailNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/EmailNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Lesson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/TimeSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/course/TimeSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/dto/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/dto/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/entity/user/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/education/src/main/java/pl/pbrodziak/education/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/demo/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/pbrodziak/demo/ApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1x6HLsiauLXCxLiUOym2tyCj6R7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MyTeacherJh" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.pbrodziak.education.entity.dto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Program Files\projekty java i c#\inżynierka Education System\beckend\MyTeacher1.1\education\src\main\java\pl\pbrodziak\education" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.EducationSystemApplication">
+    <configuration name="EducationSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.pbrodziak.education.EducationSystemApplication" />
+      <module name="education" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.pbrodziak.education.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="MyTeacher1.1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.pbrodziak.demo.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EducationSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="education" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.pbrodziak.education.EducationSystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="payment" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.pbrodziak.payment.PaymentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.EducationSystemApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="34999fda-fe65-4c2b-87f8-963b392090d4" name="Default Changelist" comment="" />
+      <created>1629668566358</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1629668566358</updated>
+      <workItem from="1629668568118" duration="15935000" />
+      <workItem from="1629742218477" duration="2312000" />
+      <workItem from="1629787028111" duration="9168000" />
+      <workItem from="1630232046395" duration="1029000" />
+      <workItem from="1630234384249" duration="94000" />
+      <workItem from="1630235668039" duration="242000" />
+      <workItem from="1630243052275" duration="10067000" />
+      <workItem from="1631045553842" duration="2792000" />
+      <workItem from="1631478724188" duration="1761000" />
+      <workItem from="1631531252485" duration="9896000" />
+      <workItem from="1632692551536" duration="418000" />
+      <workItem from="1634946282467" duration="1932000" />
+      <workItem from="1637707533893" duration="84000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add method addUser and getUser endpionts">
+      <created>1629721227025</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629721227025</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add CourseController and addCourse, get course method">
+      <created>1629742304904</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629742304904</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add method addUser and getUser endpionts" />
+    <MESSAGE value="add CourseController and addCourse, get course method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add CourseController and addCourse, get course method" />
+  </component>
+</project>

@@ -3,7 +3,7 @@ package pl.pbrodziak.education.entity.dto.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import pl.pbrodziak.education.entity.User;
+import pl.pbrodziak.education.entity.user.User;
 import pl.pbrodziak.education.entity.dto.UserDto;
 
 @Mapper

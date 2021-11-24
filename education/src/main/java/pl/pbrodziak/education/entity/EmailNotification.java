@@ -3,6 +3,7 @@ package pl.pbrodziak.education.entity;
 import lombok.Data;
 import pl.pbrodziak.education.entity.course.Course;
 import pl.pbrodziak.education.entity.course.Lesson;
+import pl.pbrodziak.education.entity.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

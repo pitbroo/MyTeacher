@@ -1,6 +1,7 @@
 package pl.pbrodziak.education.controller;
 
 import org.springframework.web.bind.annotation.*;
+import pl.pbrodziak.education.dto.MessageDto;
 import pl.pbrodziak.education.entity.course.Course;
 import pl.pbrodziak.education.entity.dto.CourseDto;
 import pl.pbrodziak.education.service.CourseService;
@@ -8,7 +9,7 @@ import pl.pbrodziak.education.service.CourseService;
 import java.util.List;
 
 @RestController
-@RequestMapping("course")
+    @RequestMapping("course")
 @CrossOrigin("http://localhost:3000")
 public class CourseController {
 
@@ -26,5 +27,14 @@ public class CourseController {
     @PostMapping("add")
     public Course addCourse(@RequestBody CourseDto courseDto){
         return courseService.addCourse(courseDto);
+    }
+
+    @GetMapping("/")
+    public MessageDto hello() {
+        return new MessageDto("Hello world");
+    }
+    @GetMapping("/secured")
+    public MessageDto helloSecured() {
+        return new MessageDto("Hello secured");
     }
 }
