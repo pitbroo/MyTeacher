@@ -1,0 +1,76 @@
+
+entity Course {
+	name String,
+    price Long,
+    seller String
+}
+
+entity Point {
+	date LocalDate,
+    value Long
+}
+
+entity Course {
+	name String,
+    value Long,
+    price Float,
+    category String,
+    description String
+}
+
+entity Lesson {
+	status String,
+    dateStart LocalDate,
+    dateEnd LocalDate,
+    classroomOrAddres String
+}
+entity Task {
+	pointGrade Long,
+    content String,
+    deadline LocalDate
+}
+entity TaskSolved {
+	pointGrade Long,
+    content String,
+    deadline LocalDate,
+    sendDay LocalDate,
+    answer String,
+    attachment Blob
+}
+entity TimeShit{
+	present Boolean,
+    date LocalDate
+}
+entity EmailNotification{
+	content String,
+    time LocalDate
+}
+entity Payment {
+	deadline LocalDate,
+  	date LocalDate
+}
+
+relationship ManyToOne {
+	Lesson to Course,
+    TaskSolved to User,
+    TaskSolved to Task,
+    Task to Lesson,
+    Point{user(login)} to User,
+	Course{user(instructor)} to User,
+    TimeShit to User,
+}
+relationship ManyToMany {
+	User to EmailNotification,
+    User to Course,
+    User to Payment
+}
+relationship OneToOne {
+	Payment to Course
+}
+
+
+
+service all with serviceImpl
+filter *
+
+
