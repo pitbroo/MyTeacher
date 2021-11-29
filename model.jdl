@@ -88,5 +88,3 @@ relationship OneToOne {
 
 service all with serviceImpl
 filter *
-
-
