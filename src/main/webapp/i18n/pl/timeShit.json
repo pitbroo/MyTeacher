@@ -1,0 +1,26 @@
+{
+  "myTeacherApp": {
+    "timeShit": {
+      "home": {
+        "title": "Time Shit",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Time Shit",
+        "createOrEditLabel": "Dodaj lub edytuj: Time Shit",
+        "notFound": "No Time Shits found"
+      },
+      "created": "Utworzono nowy obiekt typu Time Shit z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Time Shit z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Time Shit z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Time Shit {{ id }}?"
+      },
+      "detail": {
+        "title": "Time Shit"
+      },
+      "id": "ID",
+      "present": "Present",
+      "date": "Date",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "myTeacherApp": {
+    "paymentUser": {
+      "home": {
+        "title": "Payment User",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Payment User",
+        "createOrEditLabel": "Dodaj lub edytuj: Payment User",
+        "notFound": "No Payment Users found"
+      },
+      "created": "Utworzono nowy obiekt typu Payment User z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Payment User z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Payment User z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Payment User {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment User"
+      },
+      "id": "ID",
+      "payment": "Payment",
+      "user": "User"
+    }
+  }
+}

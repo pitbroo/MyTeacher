@@ -1,0 +1,26 @@
+{
+  "myTeacherApp": {
+    "point": {
+      "home": {
+        "title": "Point",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Point",
+        "createOrEditLabel": "Dodaj lub edytuj: Point",
+        "notFound": "No Points found"
+      },
+      "created": "Utworzono nowy obiekt typu Point z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Point z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Point z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Point {{ id }}?"
+      },
+      "detail": {
+        "title": "Point"
+      },
+      "id": "ID",
+      "date": "Date",
+      "value": "Value",
+      "user": "User"
+    }
+  }
+}

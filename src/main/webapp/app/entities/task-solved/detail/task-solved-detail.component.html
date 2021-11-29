@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="taskSolved">
+      <h2 data-cy="taskSolvedDetailsHeading"><span jhiTranslate="myTeacherApp.taskSolved.detail.title">Task Solved</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ taskSolved.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.pointGrade">Point Grade</span></dt>
+        <dd>
+          <span>{{ taskSolved.pointGrade }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.content">Content</span></dt>
+        <dd>
+          <span>{{ taskSolved.content }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.deadline">Deadline</span></dt>
+        <dd>
+          <span>{{ taskSolved.deadline | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.sendDay">Send Day</span></dt>
+        <dd>
+          <span>{{ taskSolved.sendDay | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.answer">Answer</span></dt>
+        <dd>
+          <span>{{ taskSolved.answer }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.attachment">Attachment</span></dt>
+        <dd>
+          <div *ngIf="taskSolved.attachment">
+            <a (click)="openFile(taskSolved.attachment, taskSolved.attachmentContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ taskSolved.attachmentContentType }}, {{ byteSize(taskSolved.attachment) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.user">User</span></dt>
+        <dd>
+          <span>{{ taskSolved.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.taskSolved.task">Task</span></dt>
+        <dd>
+          <div *ngIf="taskSolved.task">
+            <a [routerLink]="['/task', taskSolved.task?.id, 'view']">{{ taskSolved.task?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task-solved', taskSolved.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -48,6 +48,23 @@ public class CacheConfiguration {
             createCache(cm, pl.pbrodziak.domain.User.class.getName());
             createCache(cm, pl.pbrodziak.domain.Authority.class.getName());
             createCache(cm, pl.pbrodziak.domain.User.class.getName() + ".authorities");
+            createCache(cm, pl.pbrodziak.domain.Course.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Course.class.getName() + ".lessons");
+            createCache(cm, pl.pbrodziak.domain.Course.class.getName() + ".courseUsers");
+            createCache(cm, pl.pbrodziak.domain.Point.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Lesson.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Lesson.class.getName() + ".tasks");
+            createCache(cm, pl.pbrodziak.domain.Task.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Task.class.getName() + ".taskSolveds");
+            createCache(cm, pl.pbrodziak.domain.TaskSolved.class.getName());
+            createCache(cm, pl.pbrodziak.domain.TimeShit.class.getName());
+            createCache(cm, pl.pbrodziak.domain.EmailNotification.class.getName());
+            createCache(cm, pl.pbrodziak.domain.EmailNotification.class.getName() + ".emailNotificationUsers");
+            createCache(cm, pl.pbrodziak.domain.Payment.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Payment.class.getName() + ".paymentUsers");
+            createCache(cm, pl.pbrodziak.domain.EmailNotificationUser.class.getName());
+            createCache(cm, pl.pbrodziak.domain.CourseUser.class.getName());
+            createCache(cm, pl.pbrodziak.domain.PaymentUser.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

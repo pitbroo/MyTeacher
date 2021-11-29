@@ -1,0 +1,170 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-task-solved-heading"
+        data-cy="TaskSolvedCreateUpdateHeading"
+        jhiTranslate="myTeacherApp.taskSolved.home.createOrEditLabel"
+      >
+        Create or edit a Task Solved
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.pointGrade" for="field_pointGrade">Point Grade</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pointGrade"
+            id="field_pointGrade"
+            data-cy="pointGrade"
+            formControlName="pointGrade"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.content" for="field_content">Content</label>
+          <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.deadline" for="field_deadline">Deadline</label>
+          <div class="input-group">
+            <input
+              id="field_deadline"
+              data-cy="deadline"
+              type="text"
+              class="form-control"
+              name="deadline"
+              ngbDatepicker
+              #deadlineDp="ngbDatepicker"
+              formControlName="deadline"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="deadlineDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.sendDay" for="field_sendDay">Send Day</label>
+          <div class="input-group">
+            <input
+              id="field_sendDay"
+              data-cy="sendDay"
+              type="text"
+              class="form-control"
+              name="sendDay"
+              ngbDatepicker
+              #sendDayDp="ngbDatepicker"
+              formControlName="sendDay"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="sendDayDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.answer" for="field_answer">Answer</label>
+          <input type="text" class="form-control" name="answer" id="field_answer" data-cy="answer" formControlName="answer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.attachment" for="field_attachment">Attachment</label>
+          <div>
+            <div *ngIf="editForm.get('attachment')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-left"
+                (click)="openFile(editForm.get('attachment')!.value, editForm.get('attachmentContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-left"
+                >{{ editForm.get('attachmentContentType')!.value }}, {{ byteSize(editForm.get('attachment')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ attachment: null }); editForm.patchValue({ attachmentContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_attachment"
+              data-cy="attachment"
+              (change)="setFileData($event, 'attachment', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachment"
+            id="field_attachment"
+            data-cy="attachment"
+            formControlName="attachment"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachmentContentType"
+            id="field_attachmentContentType"
+            formControlName="attachmentContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.task" for="field_task">Task</label>
+          <select class="form-control" id="field_task" data-cy="task" name="task" formControlName="task">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="taskOption.id === editForm.get('task')!.value?.id ? editForm.get('task')!.value : taskOption"
+              *ngFor="let taskOption of tasksSharedCollection; trackBy: trackTaskById"
+            >
+              {{ taskOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

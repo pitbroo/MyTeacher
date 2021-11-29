@@ -1,0 +1,25 @@
+{
+  "myTeacherApp": {
+    "courseUser": {
+      "home": {
+        "title": "Course User",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Course User",
+        "createOrEditLabel": "Dodaj lub edytuj: Course User",
+        "notFound": "No Course Users found"
+      },
+      "created": "Utworzono nowy obiekt typu Course User z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Course User z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Course User z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Course User {{ id }}?"
+      },
+      "detail": {
+        "title": "Course User"
+      },
+      "id": "ID",
+      "user": "User",
+      "course": "Course"
+    }
+  }
+}

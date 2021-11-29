@@ -42,6 +42,20 @@
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["pl", "en"]
+    "languages": ["pl", "en"],
+    "entities": [
+      "Course",
+      "Point",
+      "Lesson",
+      "Task",
+      "TaskSolved",
+      "TimeShit",
+      "EmailNotification",
+      "Payment",
+      "EmailNotificationUser",
+      "CourseUser",
+      "PaymentUser"
+    ],
+    "lastLiquibaseTimestamp": 1638188365000
   }
 }

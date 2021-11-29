@@ -1,0 +1,27 @@
+{
+  "myTeacherApp": {
+    "emailNotification": {
+      "home": {
+        "title": "Email Notifications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Email Notification",
+        "createOrEditLabel": "Create or edit a Email Notification",
+        "notFound": "No Email Notifications found"
+      },
+      "created": "A new Email Notification is created with identifier {{ param }}",
+      "updated": "A Email Notification is updated with identifier {{ param }}",
+      "deleted": "A Email Notification is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Email Notification {{ id }}?"
+      },
+      "detail": {
+        "title": "Email Notification"
+      },
+      "id": "ID",
+      "content": "Content",
+      "time": "Time",
+      "teacher": "Teacher",
+      "emailNotificationUser": "Email Notification User"
+    }
+  }
+}

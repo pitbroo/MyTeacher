@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="TaskSolvedHeading">
+    <span jhiTranslate="myTeacherApp.taskSolved.home.title">Task Solveds</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myTeacherApp.taskSolved.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-task-solved"
+        [routerLink]="['/task-solved/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myTeacherApp.taskSolved.home.createLabel"> Create a new Task Solved </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="taskSolveds?.length === 0">
+    <span jhiTranslate="myTeacherApp.taskSolved.home.notFound">No taskSolveds found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="taskSolveds && taskSolveds.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.pointGrade">Point Grade</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.content">Content</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.deadline">Deadline</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.sendDay">Send Day</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.answer">Answer</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.attachment">Attachment</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.user">User</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.task">Task</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let taskSolved of taskSolveds; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/task-solved', taskSolved.id, 'view']">{{ taskSolved.id }}</a>
+          </td>
+          <td>{{ taskSolved.pointGrade }}</td>
+          <td>{{ taskSolved.content }}</td>
+          <td>{{ taskSolved.deadline | formatMediumDate }}</td>
+          <td>{{ taskSolved.sendDay | formatMediumDate }}</td>
+          <td>{{ taskSolved.answer }}</td>
+          <td>
+            <a
+              *ngIf="taskSolved.attachment"
+              (click)="openFile(taskSolved.attachment, taskSolved.attachmentContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="taskSolved.attachment">{{ taskSolved.attachmentContentType }}, {{ byteSize(taskSolved.attachment) }}</span>
+          </td>
+          <td>
+            {{ taskSolved.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="taskSolved.task">
+              <a [routerLink]="['/task', taskSolved.task?.id, 'view']">{{ taskSolved.task?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/task-solved', taskSolved.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/task-solved', taskSolved.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(taskSolved)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

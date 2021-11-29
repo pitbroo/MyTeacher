@@ -15,7 +15,8 @@ entity Course {
     value Long,
     price Float,
     category String,
-    description String
+    description String,
+    insreuctor String
 }
 
 entity Lesson {
@@ -43,11 +44,21 @@ entity TimeShit{
 }
 entity EmailNotification{
 	content String,
-    time LocalDate
+    time LocalDate,
+    teacher String
 }
 entity Payment {
 	deadline LocalDate,
   	date LocalDate
+}
+entity EmailNotificationUser {
+
+}
+entity CourseUser {
+
+}
+entity PaymentUser {
+
 }
 
 relationship ManyToOne {
@@ -56,14 +67,19 @@ relationship ManyToOne {
     TaskSolved to Task,
     Task to Lesson,
     Point{user(login)} to User,
-	Course{user(instructor)} to User,
     TimeShit to User,
+    EmailNotificationUser to User,
+    EmailNotificationUser to EmailNotification,
+    CourseUser to User,
+    CourseUser to Course,
+    PaymentUser to Payment,
+    PaymentUser to User
 }
-relationship ManyToMany {
-	User to EmailNotification,
-    User to Course,
-    User to Payment
-}
+//relationship ManyToMany {
+//	User to EmailNotification,
+//    User to Course,
+//    User to Payment
+//}
 relationship OneToOne {
 	Payment to Course
 }

@@ -1,0 +1,25 @@
+{
+  "myTeacherApp": {
+    "emailNotificationUser": {
+      "home": {
+        "title": "Email Notification User",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Email Notification User",
+        "createOrEditLabel": "Dodaj lub edytuj: Email Notification User",
+        "notFound": "No Email Notification Users found"
+      },
+      "created": "Utworzono nowy obiekt typu Email Notification User z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Email Notification User z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Email Notification User z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Email Notification User {{ id }}?"
+      },
+      "detail": {
+        "title": "Email Notification User"
+      },
+      "id": "ID",
+      "user": "User",
+      "emailNotification": "Email Notification"
+    }
+  }
+}

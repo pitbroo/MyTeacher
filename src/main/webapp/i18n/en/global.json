@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "course": "Course",
+        "point": "Point",
+        "lesson": "Lesson",
+        "task": "Task",
+        "taskSolved": "Task Solved",
+        "timeShit": "Time Shit",
+        "emailNotification": "Email Notification",
+        "payment": "Payment",
+        "emailNotificationUser": "Email Notification User",
+        "courseUser": "Course User",
+        "paymentUser": "Payment User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

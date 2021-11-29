@@ -1,0 +1,41 @@
+{
+  "name": "Task",
+  "fields": [
+    {
+      "fieldName": "pointGrade",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "deadline",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "lesson",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "lesson"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "taskSolved",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "taskSolved"
+    }
+  ],
+  "entityTableName": "task",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211129121918"
+}

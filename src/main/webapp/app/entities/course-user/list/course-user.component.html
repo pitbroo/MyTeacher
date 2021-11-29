@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="CourseUserHeading">
+    <span jhiTranslate="myTeacherApp.courseUser.home.title">Course Users</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myTeacherApp.courseUser.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-course-user"
+        [routerLink]="['/course-user/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myTeacherApp.courseUser.home.createLabel"> Create a new Course User </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="courseUsers?.length === 0">
+    <span jhiTranslate="myTeacherApp.courseUser.home.notFound">No courseUsers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="courseUsers && courseUsers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.courseUser.user">User</span></th>
+          <th scope="col"><span jhiTranslate="myTeacherApp.courseUser.course">Course</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let courseUser of courseUsers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/course-user', courseUser.id, 'view']">{{ courseUser.id }}</a>
+          </td>
+          <td>
+            {{ courseUser.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="courseUser.course">
+              <a [routerLink]="['/course', courseUser.course?.id, 'view']">{{ courseUser.course?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/course-user', courseUser.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/course-user', courseUser.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(courseUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

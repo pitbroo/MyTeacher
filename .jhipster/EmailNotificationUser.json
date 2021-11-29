@@ -1,0 +1,28 @@
+{
+  "name": "EmailNotificationUser",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "emailNotificationUser",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "emailNotification",
+      "otherEntityRelationshipName": "emailNotificationUser",
+      "relationshipName": "emailNotification"
+    }
+  ],
+  "entityTableName": "email_notification_user",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211129121923"
+}

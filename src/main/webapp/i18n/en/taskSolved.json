@@ -1,0 +1,31 @@
+{
+  "myTeacherApp": {
+    "taskSolved": {
+      "home": {
+        "title": "Task Solveds",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Solved",
+        "createOrEditLabel": "Create or edit a Task Solved",
+        "notFound": "No Task Solveds found"
+      },
+      "created": "A new Task Solved is created with identifier {{ param }}",
+      "updated": "A Task Solved is updated with identifier {{ param }}",
+      "deleted": "A Task Solved is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Solved {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Solved"
+      },
+      "id": "ID",
+      "pointGrade": "Point Grade",
+      "content": "Content",
+      "deadline": "Deadline",
+      "sendDay": "Send Day",
+      "answer": "Answer",
+      "attachment": "Attachment",
+      "user": "User",
+      "task": "Task"
+    }
+  }
+}

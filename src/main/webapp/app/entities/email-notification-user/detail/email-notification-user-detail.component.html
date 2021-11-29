@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="emailNotificationUser">
+      <h2 data-cy="emailNotificationUserDetailsHeading">
+        <span jhiTranslate="myTeacherApp.emailNotificationUser.detail.title">Email Notification User</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ emailNotificationUser.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.emailNotificationUser.user">User</span></dt>
+        <dd>
+          <span>{{ emailNotificationUser.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.emailNotificationUser.emailNotification">Email Notification</span></dt>
+        <dd>
+          <div *ngIf="emailNotificationUser.emailNotification">
+            <a [routerLink]="['/email-notification', emailNotificationUser.emailNotification?.id, 'view']">{{
+              emailNotificationUser.emailNotification?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/email-notification-user', emailNotificationUser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

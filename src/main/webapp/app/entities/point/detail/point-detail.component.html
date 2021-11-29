@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="point">
+      <h2 data-cy="pointDetailsHeading"><span jhiTranslate="myTeacherApp.point.detail.title">Point</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ point.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.point.date">Date</span></dt>
+        <dd>
+          <span>{{ point.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.point.value">Value</span></dt>
+        <dd>
+          <span>{{ point.value }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.point.user">User</span></dt>
+        <dd>
+          <span>{{ point.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/point', point.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

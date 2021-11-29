@@ -1,0 +1,32 @@
+{
+  "myTeacherApp": {
+    "course": {
+      "home": {
+        "title": "Course",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Course",
+        "createOrEditLabel": "Dodaj lub edytuj: Course",
+        "notFound": "No Courses found"
+      },
+      "created": "Utworzono nowy obiekt typu Course z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Course z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Course z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "id": "ID",
+      "name": "Name",
+      "value": "Value",
+      "price": "Price",
+      "category": "Category",
+      "description": "Description",
+      "insreuctor": "Insreuctor",
+      "payment": "Payment",
+      "lesson": "Lesson",
+      "courseUser": "Course User"
+    }
+  }
+}

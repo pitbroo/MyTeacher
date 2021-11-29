@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="course">
+      <h2 data-cy="courseDetailsHeading"><span jhiTranslate="myTeacherApp.course.detail.title">Course</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ course.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.name">Name</span></dt>
+        <dd>
+          <span>{{ course.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.value">Value</span></dt>
+        <dd>
+          <span>{{ course.value }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.price">Price</span></dt>
+        <dd>
+          <span>{{ course.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.category">Category</span></dt>
+        <dd>
+          <span>{{ course.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.description">Description</span></dt>
+        <dd>
+          <span>{{ course.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.course.insreuctor">Insreuctor</span></dt>
+        <dd>
+          <span>{{ course.insreuctor }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

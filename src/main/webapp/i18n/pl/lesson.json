@@ -1,0 +1,29 @@
+{
+  "myTeacherApp": {
+    "lesson": {
+      "home": {
+        "title": "Lesson",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Lesson",
+        "createOrEditLabel": "Dodaj lub edytuj: Lesson",
+        "notFound": "No Lessons found"
+      },
+      "created": "Utworzono nowy obiekt typu Lesson z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Lesson z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Lesson z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Lesson {{ id }}?"
+      },
+      "detail": {
+        "title": "Lesson"
+      },
+      "id": "ID",
+      "status": "Status",
+      "dateStart": "Date Start",
+      "dateEnd": "Date End",
+      "classroomOrAddres": "Classroom Or Addres",
+      "course": "Course",
+      "task": "Task"
+    }
+  }
+}
