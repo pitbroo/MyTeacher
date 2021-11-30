@@ -15,8 +15,7 @@ entity Course {
     value Long,
     price Float,
     category String,
-    description String,
-    insreuctor String
+    description String
 }
 
 entity Lesson {
@@ -62,13 +61,14 @@ entity PaymentUser {
 }
 
 relationship ManyToOne {
-	Lesson to Course,
-    TaskSolved to User,
+	Lesson{course(name)} to Course,
+    TaskSolved{user(login)} to User,
     TaskSolved to Task,
     Task to Lesson,
     Point{user(login)} to User,
-    TimeShit to User,
-    EmailNotificationUser to User,
+    Course{user(login)} to User,
+    TimeShit {user(login)}to User,
+    EmailNotificationUser{user(login)} to User,
     EmailNotificationUser to EmailNotification,
     CourseUser to User,
     CourseUser to Course,
@@ -88,3 +88,5 @@ relationship OneToOne {
 
 service all with serviceImpl
 filter *
+
+

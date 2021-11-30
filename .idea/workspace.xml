@@ -6,9 +6,53 @@
   <component name="ChangeListManager">
     <list default="true" id="acd55d26-855a-499f-9c42-767234b12f1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/Course.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/Course.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/EmailNotificationUser.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/EmailNotificationUser.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/Lesson.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/Lesson.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/TaskSolved.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/TaskSolved.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/TimeShit.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/TimeShit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.jdl" beforeDir="false" afterPath="$PROJECT_DIR$/model.jdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/security/AuthoritiesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/security/AuthoritiesConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/config/authority.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/config/authority.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/config/CacheConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/CourseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/CourseUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Lesson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/CourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/CourseQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/CourseQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/criteria/CourseCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/criteria/CourseCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/service/impl/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20211129121915_added_entity_Course.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20211129121915_added_entity_Course.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/course.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/course.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/course.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/course.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/detail/course-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/detail/course-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/list/course.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/list/course.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/service/course.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/service/course.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/detail/email-notification-user-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/detail/email-notification-user-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/list/email-notification-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/list/email-notification-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/update/email-notification-user-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/email-notification-user/update/email-notification-user-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/entity-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/entity-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/detail/lesson-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/detail/lesson-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/list/lesson.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/list/lesson.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/detail/task-solved-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/detail/task-solved-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/list/task-solved.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/list/task-solved.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/update/task-solved-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/update/task-solved-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/detail/time-shit-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/detail/time-shit-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/list/time-shit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/list/time-shit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/update/time-shit-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/time-shit/update/time-shit-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/user/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/user/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/en/course.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/course.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/en/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pl/course.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pl/course.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pl/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pl/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/pbrodziak/web/rest/CourseResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/pbrodziak/web/rest/CourseResourceIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +90,15 @@
     <property name="ts.external.directory.path" value="C:\Users\piotr\Desktop\MyTeacher Fullstack\node_modules\typescript\lib" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,7 +119,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638183747716</updated>
-      <workItem from="1638183749399" duration="6109000" />
+      <workItem from="1638183749399" duration="18507000" />
+      <workItem from="1638265047004" duration="6132000" />
     </task>
     <servers />
   </component>

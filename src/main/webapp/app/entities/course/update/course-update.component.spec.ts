@@ -10,6 +10,9 @@ import { of, Subject } from 'rxjs';
 import { CourseService } from '../service/course.service';
 import { ICourse, Course } from '../course.model';
 
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
+
 import { CourseUpdateComponent } from './course-update.component';
 
 describe('Component Tests', () => {
@@ -18,6 +21,7 @@ describe('Component Tests', () => {
     let fixture: ComponentFixture<CourseUpdateComponent>;
     let activatedRoute: ActivatedRoute;
     let courseService: CourseService;
+    let userService: UserService;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -31,18 +35,41 @@ describe('Component Tests', () => {
       fixture = TestBed.createComponent(CourseUpdateComponent);
       activatedRoute = TestBed.inject(ActivatedRoute);
       courseService = TestBed.inject(CourseService);
+      userService = TestBed.inject(UserService);
 
       comp = fixture.componentInstance;
     });
 
     describe('ngOnInit', () => {
+      it('Should call User query and add missing value', () => {
+        const course: ICourse = { id: 456 };
+        const user: IUser = { id: 83217 };
+        course.user = user;
+
+        const userCollection: IUser[] = [{ id: 96519 }];
+        jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
+        const additionalUsers = [user];
+        const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
+        jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+        activatedRoute.data = of({ course });
+        comp.ngOnInit();
+
+        expect(userService.query).toHaveBeenCalled();
+        expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(userCollection, ...additionalUsers);
+        expect(comp.usersSharedCollection).toEqual(expectedCollection);
+      });
+
       it('Should update editForm', () => {
         const course: ICourse = { id: 456 };
+        const user: IUser = { id: 3609 };
+        course.user = user;
 
         activatedRoute.data = of({ course });
         comp.ngOnInit();
 
         expect(comp.editForm.value).toEqual(expect.objectContaining(course));
+        expect(comp.usersSharedCollection).toContain(user);
       });
     });
 
@@ -107,6 +134,16 @@ describe('Component Tests', () => {
         expect(courseService.update).toHaveBeenCalledWith(course);
         expect(comp.isSaving).toEqual(false);
         expect(comp.previousState).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('Tracking relationships identifiers', () => {
+      describe('trackUserById', () => {
+        it('Should return tracked User primary key', () => {
+          const entity = { id: 123 };
+          const trackResult = comp.trackUserById(0, entity);
+          expect(trackResult).toEqual(entity.id);
+        });
       });
     });
   });

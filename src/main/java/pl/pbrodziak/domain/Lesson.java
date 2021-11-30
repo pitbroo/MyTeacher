@@ -36,7 +36,7 @@ public class Lesson implements Serializable {
     private String classroomOrAddres;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "payment", "lessons", "courseUsers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "payment", "courseUsers" }, allowSetters = true)
     private Course course;
 
     @OneToMany(mappedBy = "lesson")

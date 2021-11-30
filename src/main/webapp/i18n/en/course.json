@@ -23,9 +23,8 @@
       "price": "Price",
       "category": "Category",
       "description": "Description",
-      "insreuctor": "Insreuctor",
+      "user": "User",
       "payment": "Payment",
-      "lesson": "Lesson",
       "courseUser": "Course User"
     }
   }

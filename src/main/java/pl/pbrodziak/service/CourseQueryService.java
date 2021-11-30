@@ -96,19 +96,16 @@ public class CourseQueryService extends QueryService<Course> {
             if (criteria.getDescription() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getDescription(), Course_.description));
             }
-            if (criteria.getInsreuctor() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getInsreuctor(), Course_.insreuctor));
+            if (criteria.getUserId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(criteria.getUserId(), root -> root.join(Course_.user, JoinType.LEFT).get(User_.id))
+                    );
             }
             if (criteria.getPaymentId() != null) {
                 specification =
                     specification.and(
                         buildSpecification(criteria.getPaymentId(), root -> root.join(Course_.payment, JoinType.LEFT).get(Payment_.id))
-                    );
-            }
-            if (criteria.getLessonId() != null) {
-                specification =
-                    specification.and(
-                        buildSpecification(criteria.getLessonId(), root -> root.join(Course_.lessons, JoinType.LEFT).get(Lesson_.id))
                     );
             }
             if (criteria.getCourseUserId() != null) {

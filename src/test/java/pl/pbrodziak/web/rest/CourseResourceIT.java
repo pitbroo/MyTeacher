@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.pbrodziak.IntegrationTest;
 import pl.pbrodziak.domain.Course;
 import pl.pbrodziak.domain.CourseUser;
-import pl.pbrodziak.domain.Lesson;
 import pl.pbrodziak.domain.Payment;
+import pl.pbrodziak.domain.User;
 import pl.pbrodziak.repository.CourseRepository;
 import pl.pbrodziak.service.criteria.CourseCriteria;
 
@@ -49,9 +49,6 @@ class CourseResourceIT {
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_INSREUCTOR = "AAAAAAAAAA";
-    private static final String UPDATED_INSREUCTOR = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/courses";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -82,8 +79,7 @@ class CourseResourceIT {
             .value(DEFAULT_VALUE)
             .price(DEFAULT_PRICE)
             .category(DEFAULT_CATEGORY)
-            .description(DEFAULT_DESCRIPTION)
-            .insreuctor(DEFAULT_INSREUCTOR);
+            .description(DEFAULT_DESCRIPTION);
         return course;
     }
 
@@ -99,8 +95,7 @@ class CourseResourceIT {
             .value(UPDATED_VALUE)
             .price(UPDATED_PRICE)
             .category(UPDATED_CATEGORY)
-            .description(UPDATED_DESCRIPTION)
-            .insreuctor(UPDATED_INSREUCTOR);
+            .description(UPDATED_DESCRIPTION);
         return course;
     }
 
@@ -127,7 +122,6 @@ class CourseResourceIT {
         assertThat(testCourse.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testCourse.getCategory()).isEqualTo(DEFAULT_CATEGORY);
         assertThat(testCourse.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testCourse.getInsreuctor()).isEqualTo(DEFAULT_INSREUCTOR);
     }
 
     @Test
@@ -164,8 +158,7 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.intValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].insreuctor").value(hasItem(DEFAULT_INSREUCTOR)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
     }
 
     @Test
@@ -184,8 +177,7 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.intValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.insreuctor").value(DEFAULT_INSREUCTOR));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
     }
 
     @Test
@@ -650,80 +642,21 @@ class CourseResourceIT {
 
     @Test
     @Transactional
-    void getAllCoursesByInsreuctorIsEqualToSomething() throws Exception {
+    void getAllCoursesByUserIsEqualToSomething() throws Exception {
         // Initialize the database
         courseRepository.saveAndFlush(course);
-
-        // Get all the courseList where insreuctor equals to DEFAULT_INSREUCTOR
-        defaultCourseShouldBeFound("insreuctor.equals=" + DEFAULT_INSREUCTOR);
-
-        // Get all the courseList where insreuctor equals to UPDATED_INSREUCTOR
-        defaultCourseShouldNotBeFound("insreuctor.equals=" + UPDATED_INSREUCTOR);
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByInsreuctorIsNotEqualToSomething() throws Exception {
-        // Initialize the database
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        course.setUser(user);
         courseRepository.saveAndFlush(course);
+        Long userId = user.getId();
 
-        // Get all the courseList where insreuctor not equals to DEFAULT_INSREUCTOR
-        defaultCourseShouldNotBeFound("insreuctor.notEquals=" + DEFAULT_INSREUCTOR);
+        // Get all the courseList where user equals to userId
+        defaultCourseShouldBeFound("userId.equals=" + userId);
 
-        // Get all the courseList where insreuctor not equals to UPDATED_INSREUCTOR
-        defaultCourseShouldBeFound("insreuctor.notEquals=" + UPDATED_INSREUCTOR);
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByInsreuctorIsInShouldWork() throws Exception {
-        // Initialize the database
-        courseRepository.saveAndFlush(course);
-
-        // Get all the courseList where insreuctor in DEFAULT_INSREUCTOR or UPDATED_INSREUCTOR
-        defaultCourseShouldBeFound("insreuctor.in=" + DEFAULT_INSREUCTOR + "," + UPDATED_INSREUCTOR);
-
-        // Get all the courseList where insreuctor equals to UPDATED_INSREUCTOR
-        defaultCourseShouldNotBeFound("insreuctor.in=" + UPDATED_INSREUCTOR);
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByInsreuctorIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        courseRepository.saveAndFlush(course);
-
-        // Get all the courseList where insreuctor is not null
-        defaultCourseShouldBeFound("insreuctor.specified=true");
-
-        // Get all the courseList where insreuctor is null
-        defaultCourseShouldNotBeFound("insreuctor.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByInsreuctorContainsSomething() throws Exception {
-        // Initialize the database
-        courseRepository.saveAndFlush(course);
-
-        // Get all the courseList where insreuctor contains DEFAULT_INSREUCTOR
-        defaultCourseShouldBeFound("insreuctor.contains=" + DEFAULT_INSREUCTOR);
-
-        // Get all the courseList where insreuctor contains UPDATED_INSREUCTOR
-        defaultCourseShouldNotBeFound("insreuctor.contains=" + UPDATED_INSREUCTOR);
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByInsreuctorNotContainsSomething() throws Exception {
-        // Initialize the database
-        courseRepository.saveAndFlush(course);
-
-        // Get all the courseList where insreuctor does not contain DEFAULT_INSREUCTOR
-        defaultCourseShouldNotBeFound("insreuctor.doesNotContain=" + DEFAULT_INSREUCTOR);
-
-        // Get all the courseList where insreuctor does not contain UPDATED_INSREUCTOR
-        defaultCourseShouldBeFound("insreuctor.doesNotContain=" + UPDATED_INSREUCTOR);
+        // Get all the courseList where user equals to (userId + 1)
+        defaultCourseShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
     @Test
@@ -744,25 +677,6 @@ class CourseResourceIT {
 
         // Get all the courseList where payment equals to (paymentId + 1)
         defaultCourseShouldNotBeFound("paymentId.equals=" + (paymentId + 1));
-    }
-
-    @Test
-    @Transactional
-    void getAllCoursesByLessonIsEqualToSomething() throws Exception {
-        // Initialize the database
-        courseRepository.saveAndFlush(course);
-        Lesson lesson = LessonResourceIT.createEntity(em);
-        em.persist(lesson);
-        em.flush();
-        course.addLesson(lesson);
-        courseRepository.saveAndFlush(course);
-        Long lessonId = lesson.getId();
-
-        // Get all the courseList where lesson equals to lessonId
-        defaultCourseShouldBeFound("lessonId.equals=" + lessonId);
-
-        // Get all the courseList where lesson equals to (lessonId + 1)
-        defaultCourseShouldNotBeFound("lessonId.equals=" + (lessonId + 1));
     }
 
     @Test
@@ -797,8 +711,7 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.intValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].insreuctor").value(hasItem(DEFAULT_INSREUCTOR)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
 
         // Check, that the count call also returns 1
         restCourseMockMvc
@@ -851,8 +764,7 @@ class CourseResourceIT {
             .value(UPDATED_VALUE)
             .price(UPDATED_PRICE)
             .category(UPDATED_CATEGORY)
-            .description(UPDATED_DESCRIPTION)
-            .insreuctor(UPDATED_INSREUCTOR);
+            .description(UPDATED_DESCRIPTION);
 
         restCourseMockMvc
             .perform(
@@ -871,7 +783,6 @@ class CourseResourceIT {
         assertThat(testCourse.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testCourse.getCategory()).isEqualTo(UPDATED_CATEGORY);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testCourse.getInsreuctor()).isEqualTo(UPDATED_INSREUCTOR);
     }
 
     @Test
@@ -942,7 +853,7 @@ class CourseResourceIT {
         Course partialUpdatedCourse = new Course();
         partialUpdatedCourse.setId(course.getId());
 
-        partialUpdatedCourse.price(UPDATED_PRICE).description(UPDATED_DESCRIPTION).insreuctor(UPDATED_INSREUCTOR);
+        partialUpdatedCourse.price(UPDATED_PRICE).description(UPDATED_DESCRIPTION);
 
         restCourseMockMvc
             .perform(
@@ -961,7 +872,6 @@ class CourseResourceIT {
         assertThat(testCourse.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testCourse.getCategory()).isEqualTo(DEFAULT_CATEGORY);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testCourse.getInsreuctor()).isEqualTo(UPDATED_INSREUCTOR);
     }
 
     @Test
@@ -981,8 +891,7 @@ class CourseResourceIT {
             .value(UPDATED_VALUE)
             .price(UPDATED_PRICE)
             .category(UPDATED_CATEGORY)
-            .description(UPDATED_DESCRIPTION)
-            .insreuctor(UPDATED_INSREUCTOR);
+            .description(UPDATED_DESCRIPTION);
 
         restCourseMockMvc
             .perform(
@@ -1001,7 +910,6 @@ class CourseResourceIT {
         assertThat(testCourse.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testCourse.getCategory()).isEqualTo(UPDATED_CATEGORY);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testCourse.getInsreuctor()).isEqualTo(UPDATED_INSREUCTOR);
     }
 
     @Test

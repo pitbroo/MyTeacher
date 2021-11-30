@@ -20,25 +20,22 @@
     {
       "fieldName": "description",
       "fieldType": "String"
-    },
-    {
-      "fieldName": "insreuctor",
-      "fieldType": "String"
     }
   ],
   "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    },
     {
       "relationshipType": "one-to-one",
       "otherEntityName": "payment",
       "otherEntityRelationshipName": "course",
       "relationshipName": "payment",
       "ownerSide": false
-    },
-    {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "lesson",
-      "otherEntityRelationshipName": "course",
-      "relationshipName": "lesson"
     },
     {
       "relationshipType": "one-to-many",

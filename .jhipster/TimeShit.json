@@ -15,7 +15,8 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "timeShit",
-      "relationshipName": "user"
+      "relationshipName": "user",
+      "otherEntityField": "login"
     }
   ],
   "entityTableName": "time_shit",

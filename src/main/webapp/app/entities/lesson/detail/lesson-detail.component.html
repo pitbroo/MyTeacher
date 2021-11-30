@@ -33,7 +33,7 @@
         <dt><span jhiTranslate="myTeacherApp.lesson.course">Course</span></dt>
         <dd>
           <div *ngIf="lesson.course">
-            <a [routerLink]="['/course', lesson.course?.id, 'view']">{{ lesson.course?.id }}</a>
+            <a [routerLink]="['/course', lesson.course?.id, 'view']">{{ lesson.course?.name }}</a>
           </div>
         </dd>
       </dl>

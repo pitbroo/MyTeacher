@@ -54,8 +54,9 @@
       "Payment",
       "EmailNotificationUser",
       "CourseUser",
-      "PaymentUser"
+      "PaymentUser",
+      "Ranking"
     ],
-    "lastLiquibaseTimestamp": 1638188365000
+    "lastLiquibaseTimestamp": 1638205727000
   }
 }

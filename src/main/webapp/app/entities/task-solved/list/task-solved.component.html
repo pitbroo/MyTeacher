@@ -64,7 +64,7 @@
             <span *ngIf="taskSolved.attachment">{{ taskSolved.attachmentContentType }}, {{ byteSize(taskSolved.attachment) }}</span>
           </td>
           <td>
-            {{ taskSolved.user?.id }}
+            {{ taskSolved.user?.login }}
           </td>
           <td>
             <div *ngIf="taskSolved.task">

@@ -1,5 +1,5 @@
+import { IUser } from 'app/entities/user/user.model';
 import { IPayment } from 'app/entities/payment/payment.model';
-import { ILesson } from 'app/entities/lesson/lesson.model';
 import { ICourseUser } from 'app/entities/course-user/course-user.model';
 
 export interface ICourse {
@@ -9,9 +9,8 @@ export interface ICourse {
   price?: number | null;
   category?: string | null;
   description?: string | null;
-  insreuctor?: string | null;
+  user?: IUser | null;
   payment?: IPayment | null;
-  lessons?: ILesson[] | null;
   courseUsers?: ICourseUser[] | null;
 }
 
@@ -23,9 +22,8 @@ export class Course implements ICourse {
     public price?: number | null,
     public category?: string | null,
     public description?: string | null,
-    public insreuctor?: string | null,
+    public user?: IUser | null,
     public payment?: IPayment | null,
-    public lessons?: ILesson[] | null,
     public courseUsers?: ICourseUser[] | null
   ) {}
 }

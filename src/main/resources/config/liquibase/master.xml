@@ -26,6 +26,7 @@
     <include file="config/liquibase/changelog/20211129121923_added_entity_EmailNotificationUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20211129121924_added_entity_CourseUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20211129121925_added_entity_PaymentUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211129170847_added_entity_Ranking.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20211129121915_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20211129121916_added_entity_constraints_Point.xml" relativeToChangelogFile="false"/>

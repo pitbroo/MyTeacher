@@ -29,7 +29,7 @@ public class Payment implements Serializable {
     @Column(name = "date")
     private LocalDate date;
 
-    @JsonIgnoreProperties(value = { "payment", "lessons", "courseUsers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "payment", "courseUsers" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Course course;

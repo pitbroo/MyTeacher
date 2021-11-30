@@ -37,17 +37,12 @@ public class Course implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "insreuctor")
-    private String insreuctor;
+    @ManyToOne
+    private User user;
 
     @JsonIgnoreProperties(value = { "course", "paymentUsers" }, allowSetters = true)
     @OneToOne(mappedBy = "course")
     private Payment payment;
-
-    @OneToMany(mappedBy = "course")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "tasks" }, allowSetters = true)
-    private Set<Lesson> lessons = new HashSet<>();
 
     @OneToMany(mappedBy = "course")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -133,17 +128,17 @@ public class Course implements Serializable {
         this.description = description;
     }
 
-    public String getInsreuctor() {
-        return this.insreuctor;
+    public User getUser() {
+        return this.user;
     }
 
-    public Course insreuctor(String insreuctor) {
-        this.insreuctor = insreuctor;
+    public Course user(User user) {
+        this.setUser(user);
         return this;
     }
 
-    public void setInsreuctor(String insreuctor) {
-        this.insreuctor = insreuctor;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Payment getPayment() {
@@ -163,37 +158,6 @@ public class Course implements Serializable {
             payment.setCourse(this);
         }
         this.payment = payment;
-    }
-
-    public Set<Lesson> getLessons() {
-        return this.lessons;
-    }
-
-    public Course lessons(Set<Lesson> lessons) {
-        this.setLessons(lessons);
-        return this;
-    }
-
-    public Course addLesson(Lesson lesson) {
-        this.lessons.add(lesson);
-        lesson.setCourse(this);
-        return this;
-    }
-
-    public Course removeLesson(Lesson lesson) {
-        this.lessons.remove(lesson);
-        lesson.setCourse(null);
-        return this;
-    }
-
-    public void setLessons(Set<Lesson> lessons) {
-        if (this.lessons != null) {
-            this.lessons.forEach(i -> i.setCourse(null));
-        }
-        if (lessons != null) {
-            lessons.forEach(i -> i.setCourse(this));
-        }
-        this.lessons = lessons;
     }
 
     public Set<CourseUser> getCourseUsers() {
@@ -256,7 +220,6 @@ public class Course implements Serializable {
             ", price=" + getPrice() +
             ", category='" + getCategory() + "'" +
             ", description='" + getDescription() + "'" +
-            ", insreuctor='" + getInsreuctor() + "'" +
             "}";
     }
 }

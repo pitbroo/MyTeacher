@@ -23,7 +23,8 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "course",
       "otherEntityRelationshipName": "lesson",
-      "relationshipName": "course"
+      "relationshipName": "course",
+      "otherEntityField": "name"
     },
     {
       "relationshipType": "one-to-many",

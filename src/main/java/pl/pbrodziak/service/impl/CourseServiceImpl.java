@@ -56,9 +56,6 @@ public class CourseServiceImpl implements CourseService {
                     if (course.getDescription() != null) {
                         existingCourse.setDescription(course.getDescription());
                     }
-                    if (course.getInsreuctor() != null) {
-                        existingCourse.setInsreuctor(course.getInsreuctor());
-                    }
 
                     return existingCourse;
                 }

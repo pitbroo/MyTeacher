@@ -1,0 +1,24 @@
+{
+  "myTeacherApp": {
+    "ranking": {
+      "home": {
+        "title": "Ranking",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Ranking",
+        "createOrEditLabel": "Dodaj lub edytuj: Ranking",
+        "notFound": "No Rankings found"
+      },
+      "created": "Utworzono nowy obiekt typu Ranking z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Ranking z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Ranking z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Ranking {{ id }}?"
+      },
+      "detail": {
+        "title": "Ranking"
+      },
+      "id": "ID",
+      "points": "Points"
+    }
+  }
+}

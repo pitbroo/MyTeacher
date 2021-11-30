@@ -27,7 +27,6 @@ describe('Service Tests', () => {
         price: 0,
         category: 'AAAAAAA',
         description: 'AAAAAAA',
-        insreuctor: 'AAAAAAA',
       };
     });
 
@@ -68,7 +67,6 @@ describe('Service Tests', () => {
             price: 1,
             category: 'BBBBBB',
             description: 'BBBBBB',
-            insreuctor: 'BBBBBB',
           },
           elemDefault
         );
@@ -112,7 +110,6 @@ describe('Service Tests', () => {
             price: 1,
             category: 'BBBBBB',
             description: 'BBBBBB',
-            insreuctor: 'BBBBBB',
           },
           elemDefault
         );
@@ -164,7 +161,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Course to an array', () => {
-          const courseArray: ICourse[] = [{ id: 123 }, { id: 456 }, { id: 34645 }];
+          const courseArray: ICourse[] = [{ id: 123 }, { id: 456 }, { id: 25816 }];
           const courseCollection: ICourse[] = [{ id: 123 }];
           expectedResult = service.addCourseToCollectionIfMissing(courseCollection, ...courseArray);
           expect(expectedResult).toHaveLength(3);

@@ -6,7 +6,8 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "emailNotificationUser",
-      "relationshipName": "user"
+      "relationshipName": "user",
+      "otherEntityField": "login"
     },
     {
       "relationshipType": "many-to-one",

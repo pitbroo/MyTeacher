@@ -3,10 +3,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { ICourse, Course } from '../course.model';
 import { CourseService } from '../service/course.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/user.service';
 
 @Component({
   selector: 'jhi-course-update',
@@ -15,6 +17,8 @@ import { CourseService } from '../service/course.service';
 export class CourseUpdateComponent implements OnInit {
   isSaving = false;
 
+  usersSharedCollection: IUser[] = [];
+
   editForm = this.fb.group({
     id: [],
     name: [],
@@ -22,14 +26,21 @@ export class CourseUpdateComponent implements OnInit {
     price: [],
     category: [],
     description: [],
-    insreuctor: [],
+    user: [],
   });
 
-  constructor(protected courseService: CourseService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(
+    protected courseService: CourseService,
+    protected userService: UserService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ course }) => {
       this.updateForm(course);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -45,6 +56,10 @@ export class CourseUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.courseService.create(course));
     }
+  }
+
+  trackUserById(index: number, item: IUser): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ICourse>>): void {
@@ -74,8 +89,18 @@ export class CourseUpdateComponent implements OnInit {
       price: course.price,
       category: course.category,
       description: course.description,
-      insreuctor: course.insreuctor,
+      user: course.user,
     });
+
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing(this.usersSharedCollection, course.user);
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.userService
+      .query()
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing(users, this.editForm.get('user')!.value)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 
   protected createFromForm(): ICourse {
@@ -87,7 +112,7 @@ export class CourseUpdateComponent implements OnInit {
       price: this.editForm.get(['price'])!.value,
       category: this.editForm.get(['category'])!.value,
       description: this.editForm.get(['description'])!.value,
-      insreuctor: this.editForm.get(['insreuctor'])!.value,
+      user: this.editForm.get(['user'])!.value,
     };
   }
 }

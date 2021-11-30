@@ -1,0 +1,20 @@
+{
+  "name": "Ranking",
+  "fields": [
+    {
+      "fieldName": "points",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "ranking",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211129170847"
+}

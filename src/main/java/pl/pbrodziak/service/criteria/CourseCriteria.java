@@ -36,11 +36,9 @@ public class CourseCriteria implements Serializable, Criteria {
 
     private StringFilter description;
 
-    private StringFilter insreuctor;
+    private LongFilter userId;
 
     private LongFilter paymentId;
-
-    private LongFilter lessonId;
 
     private LongFilter courseUserId;
 
@@ -53,9 +51,8 @@ public class CourseCriteria implements Serializable, Criteria {
         this.price = other.price == null ? null : other.price.copy();
         this.category = other.category == null ? null : other.category.copy();
         this.description = other.description == null ? null : other.description.copy();
-        this.insreuctor = other.insreuctor == null ? null : other.insreuctor.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
         this.paymentId = other.paymentId == null ? null : other.paymentId.copy();
-        this.lessonId = other.lessonId == null ? null : other.lessonId.copy();
         this.courseUserId = other.courseUserId == null ? null : other.courseUserId.copy();
     }
 
@@ -154,19 +151,19 @@ public class CourseCriteria implements Serializable, Criteria {
         this.description = description;
     }
 
-    public StringFilter getInsreuctor() {
-        return insreuctor;
+    public LongFilter getUserId() {
+        return userId;
     }
 
-    public StringFilter insreuctor() {
-        if (insreuctor == null) {
-            insreuctor = new StringFilter();
+    public LongFilter userId() {
+        if (userId == null) {
+            userId = new LongFilter();
         }
-        return insreuctor;
+        return userId;
     }
 
-    public void setInsreuctor(StringFilter insreuctor) {
-        this.insreuctor = insreuctor;
+    public void setUserId(LongFilter userId) {
+        this.userId = userId;
     }
 
     public LongFilter getPaymentId() {
@@ -182,21 +179,6 @@ public class CourseCriteria implements Serializable, Criteria {
 
     public void setPaymentId(LongFilter paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public LongFilter getLessonId() {
-        return lessonId;
-    }
-
-    public LongFilter lessonId() {
-        if (lessonId == null) {
-            lessonId = new LongFilter();
-        }
-        return lessonId;
-    }
-
-    public void setLessonId(LongFilter lessonId) {
-        this.lessonId = lessonId;
     }
 
     public LongFilter getCourseUserId() {
@@ -230,16 +212,15 @@ public class CourseCriteria implements Serializable, Criteria {
             Objects.equals(price, that.price) &&
             Objects.equals(category, that.category) &&
             Objects.equals(description, that.description) &&
-            Objects.equals(insreuctor, that.insreuctor) &&
+            Objects.equals(userId, that.userId) &&
             Objects.equals(paymentId, that.paymentId) &&
-            Objects.equals(lessonId, that.lessonId) &&
             Objects.equals(courseUserId, that.courseUserId)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value, price, category, description, insreuctor, paymentId, lessonId, courseUserId);
+        return Objects.hash(id, name, value, price, category, description, userId, paymentId, courseUserId);
     }
 
     // prettier-ignore
@@ -252,9 +233,8 @@ public class CourseCriteria implements Serializable, Criteria {
             (price != null ? "price=" + price + ", " : "") +
             (category != null ? "category=" + category + ", " : "") +
             (description != null ? "description=" + description + ", " : "") +
-            (insreuctor != null ? "insreuctor=" + insreuctor + ", " : "") +
+            (userId != null ? "userId=" + userId + ", " : "") +
             (paymentId != null ? "paymentId=" + paymentId + ", " : "") +
-            (lessonId != null ? "lessonId=" + lessonId + ", " : "") +
             (courseUserId != null ? "courseUserId=" + courseUserId + ", " : "") +
             "}";
     }

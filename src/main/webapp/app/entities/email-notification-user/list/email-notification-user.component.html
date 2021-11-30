@@ -44,7 +44,7 @@
             <a [routerLink]="['/email-notification-user', emailNotificationUser.id, 'view']">{{ emailNotificationUser.id }}</a>
           </td>
           <td>
-            {{ emailNotificationUser.user?.id }}
+            {{ emailNotificationUser.user?.login }}
           </td>
           <td>
             <div *ngIf="emailNotificationUser.emailNotification">

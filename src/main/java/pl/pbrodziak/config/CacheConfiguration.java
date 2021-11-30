@@ -65,6 +65,7 @@ public class CacheConfiguration {
             createCache(cm, pl.pbrodziak.domain.EmailNotificationUser.class.getName());
             createCache(cm, pl.pbrodziak.domain.CourseUser.class.getName());
             createCache(cm, pl.pbrodziak.domain.PaymentUser.class.getName());
+            createCache(cm, pl.pbrodziak.domain.Ranking.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
