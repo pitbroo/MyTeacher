@@ -44,8 +44,6 @@ spring:
         prepStmtCacheSqlLimit: 2048
         useServerPrepStmts: true
   jpa:
-    hibernate:
-      ddl-auto: update
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -60,7 +58,7 @@ spring:
     cache: false
 
 server:
-  port: 8181
+  port: 8080
 
 # ===================================================================
 # JHipster specific properties

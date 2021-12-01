@@ -70,6 +70,12 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.findAll();
     }
 
+    @Override
+    public List<Course> findByUserIsCurrentUser() {
+        log.debug("Request to Find all by current user");
+        return courseRepository.findByUserIsCurrentUser();
+    }
+
     /**
      *  Get all the courses where Payment is {@code null}.
      *  @return the list of entities.
@@ -94,5 +100,10 @@ public class CourseServiceImpl implements CourseService {
     public void delete(Long id) {
         log.debug("Request to delete Course : {}", id);
         courseRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Course> findAllUserCoursesByCurrentCourse() {
+        return courseRepository.findAllUserCoursesByCurrentCourse();
     }
 }

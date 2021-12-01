@@ -12,6 +12,7 @@ import { CourseDeleteDialogComponent } from '../delete/course-delete-dialog.comp
 })
 export class CourseComponent implements OnInit {
   courses?: ICourse[];
+  myCourses?: ICourse[];
   isLoading = false;
 
   constructor(protected courseService: CourseService, protected modalService: NgbModal) {}
@@ -28,10 +29,25 @@ export class CourseComponent implements OnInit {
         this.isLoading = false;
       }
     );
+
+  }
+  loadAllMyCourses(): void {
+    this.isLoading = true;
+
+    this.courseService.myCoursesQuery().subscribe(
+      (res: HttpResponse<ICourse[]>) => {
+        this.isLoading = false;
+        this.myCourses = res.body ?? [];
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   ngOnInit(): void {
     this.loadAll();
+    this.loadAllMyCourses()
   }
 
   trackId(index: number, item: ICourse): number {

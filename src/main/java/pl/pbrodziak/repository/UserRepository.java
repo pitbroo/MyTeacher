@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.pbrodziak.domain.User;
+import tech.jhipster.service.filter.LongFilter;
 
 /**
  * Spring Data JPA repository for the {@link User} entity.
@@ -39,4 +40,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
 
     Page<User> findAllByIdNotNullAndActivatedIsTrue(Pageable pageable);
+
+    User findOneById(LongFilter courseUserId);
 }

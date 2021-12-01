@@ -30,12 +30,13 @@ public interface CourseService {
      * @return the list of entities.
      */
     List<Course> findAll();
+    List<Course> findByUserIsCurrentUser();
     /**
      * Get all the Course where Payment is {@code null}.
      *
      * @return the {@link List} of entities.
      */
-    List<Course> findAllWherePaymentIsNull();
+    List<Course> findAllUserCoursesByCurrentCourse();
 
     /**
      * Get the "id" course.
@@ -51,4 +52,6 @@ public interface CourseService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+
 }
