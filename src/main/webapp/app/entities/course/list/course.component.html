@@ -1,17 +1,19 @@
-
 <div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+      <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+      <span jhiTranslate="myTeacherApp.course.home.refreshListLabel">Refresh List</span>
+    </button>
+  </div>
   <!--My Courses-->
-  <div >
+  <div *jhiHasAnyAuthority="'ROLE_USER'">
     <h2 id="page-heading" data-cy="CourseHeading">
-      <span>My courses</span>
+      <span>My bought courses</span>
 
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" (click)="loadAllMyCourses()" [disabled]="isLoading">
-          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-          <span jhiTranslate="myTeacherApp.course.home.refreshListLabel">Refresh List</span>
-        </button>
 
         <button
+          *jhiHasAnyAuthority="'ROLE_ADMIN'"
           id="jh-create-entity"
           data-cy="entityCreateButton"
           class="btn btn-primary jh-create-entity create-course"
@@ -42,7 +44,7 @@
           <th scope="col"><span jhiTranslate="myTeacherApp.course.category">Category</span></th>
           <th scope="col"><span jhiTranslate="myTeacherApp.course.description">Description</span></th>
           <th scope="col"><span>Instruktor</span></th>
-<!--          <th scope="col"><span jhiTranslate="myTeacherApp.course.user">User</span></th>-->
+          <!--          <th scope="col"><span jhiTranslate="myTeacherApp.course.user">User</span></th>-->
           <th scope="col"></th>
         </tr>
         </thead>
@@ -66,16 +68,17 @@
                 <fa-icon icon="eye"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
-
-              <button type="submit" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-sm"
-                      data-cy="entityEditButton">
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-              </button>
+<!--Do wywalenia -->
+<!--              <button type="submit" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-sm"-->
+<!--                      data-cy="entityEditButton">-->
+<!--                <fa-icon icon="pencil-alt"></fa-icon>-->
+<!--                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+<!--              </button>-->
 
               <button type="submit" (click)="delete(course)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+<!--                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                <span class="d-none d-md-inline">Wypisz się</span>
               </button>
             </div>
           </td>
@@ -87,15 +90,14 @@
   <!--All courses-->
   <div>
     <h2 id="page-heading" data-cy="CourseHeading">
-      <span jhiTranslate="myTeacherApp.course.home.title">Courses</span>
+      <span *jhiHasAnyAuthority="['ROLE_USER','ROLE_ADMIN']" jhiTranslate="myTeacherApp.course.home.title">Courses</span>
+<!--    <h2 id="page-heading" data-cy="CourseHeading">-->
+      <span *jhiHasAnyAuthority="['ROLE_TEACHER']">My courses</span>
 
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
-          <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-          <span jhiTranslate="myTeacherApp.course.home.refreshListLabel">Refresh List</span>
-        </button>
 
         <button
+          *jhiHasAnyAuthority="['ROLE_TEACHER','ROLE_ADMIN']"
           id="jh-create-entity"
           data-cy="entityCreateButton"
           class="btn btn-primary jh-create-entity create-course"
@@ -151,15 +153,28 @@
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
-              <button type="submit" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-sm"
+              <button
+                *jhiHasAnyAuthority="['ROLE_TEACHER', 'ROLE_ADMIN']"
+                type="submit" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-sm"
                       data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(course)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button
+                *jhiHasAnyAuthority="['ROLE_TEACHER', 'ROLE_ADMIN']"
+                type="submit" (click)="delete(course)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+              <button
+                *jhiHasAnyAuthority="'ROLE_USER'"
+                class="btn btn-success"
+                data-cy="entityDeleteButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                </svg>
+                <span class="d-none d-md-inline" >Kup Kurs</span>
               </button>
             </div>
           </td>

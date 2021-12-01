@@ -18,6 +18,7 @@ export class CourseComponent implements OnInit {
   constructor(protected courseService: CourseService, protected modalService: NgbModal) {}
 
   loadAll(): void {
+    this.loadAllMyCourses();
     this.isLoading = true;
 
     this.courseService.query().subscribe(
@@ -47,7 +48,6 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAll();
-    this.loadAllMyCourses()
   }
 
   trackId(index: number, item: ICourse): number {
