@@ -148,20 +148,31 @@ public class CourseResource {
      *
      * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of courses in body.
-     */
+     * /** Get all not user's courses */
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> getAllCourses(CourseCriteria criteria) {
         log.debug("REST request to get Courses by criteria: {}", criteria);
         List<Course> entityList;
-        if (SecurityUtils.getCurrentUserLogin().isPresent() && SecurityUtils.hasCurrentUserThisAuthority("ROLE_TEACHER")) {
+        if (SecurityUtils.getCurrentUserLogin().isPresent() && SecurityUtils.hasCurrentUserThisAuthority("ROLE_ADMIN")) {
+            entityList = courseQueryService.findByCriteria(criteria);
+            log.debug("findAll");
+        }
+        else if (SecurityUtils.getCurrentUserLogin().isPresent() && SecurityUtils.hasCurrentUserThisAuthority("ROLE_TEACHER")) {
             entityList = courseService.findByUserIsCurrentUser();
+            log.debug("findByUserIsCurrentUser");
+        }
+        else if (SecurityUtils.getCurrentUserLogin().isPresent() && SecurityUtils.hasCurrentUserThisAuthority("ROLE_USER")) {
+            entityList = courseService.findByUserIsNotCurrentUser();
+            log.debug("findByUserIsNotCurrentUser");
         }
         else {
             entityList = courseQueryService.findByCriteria(criteria);
+            log.debug("findAll");
         }
         return ResponseEntity.ok().body(entityList);
     }
 
+    /** Get all user's courses */
     @GetMapping("/courses/my")
     public ResponseEntity<List<Course>> getAllMyCourses(CourseCriteria criteria) {
         log.debug("REST request to get My Courses by criteria: {}", criteria);
@@ -174,6 +185,7 @@ public class CourseResource {
         }
         return ResponseEntity.ok().body(entityList);
     }
+
 
     /**
      * {@code GET  /courses/count} : count all the courses.

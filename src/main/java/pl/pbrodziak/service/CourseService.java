@@ -30,7 +30,9 @@ public interface CourseService {
      * @return the list of entities.
      */
     List<Course> findAll();
+    /** Get course by users*/
     List<Course> findByUserIsCurrentUser();
+    List <Course> findByUserIsNotCurrentUser();
     /**
      * Get all the Course where Payment is {@code null}.
      *

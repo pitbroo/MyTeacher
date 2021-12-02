@@ -76,6 +76,11 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.findByUserIsCurrentUser();
     }
 
+    @Override
+    public List<Course> findByUserIsNotCurrentUser() {
+        return courseRepository.findByUserIsNotCurrentUser();
+    }
+
     /**
      *  Get all the courses where Payment is {@code null}.
      *  @return the list of entities.

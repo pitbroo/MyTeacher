@@ -37,7 +37,7 @@ module.exports = (config, options, targetOptions) => {
       }),
       new WebpackNotifierPlugin({
         title: 'My Teacher',
-        contentImage: path.join(__dirname, 'logo-jhipster.png'),
+        contentImage: path.join(__dirname, 'logo.png'),
       })
     );
   }
