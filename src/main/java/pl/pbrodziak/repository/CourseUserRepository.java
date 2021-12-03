@@ -13,4 +13,5 @@ import pl.pbrodziak.domain.CourseUser;
 public interface CourseUserRepository extends JpaRepository<CourseUser, Long>, JpaSpecificationExecutor<CourseUser> {
     @Query("select courseUser from CourseUser courseUser where courseUser.user.login = ?#{principal.username}")
     List<CourseUser> findByUserIsCurrentUser();
+
 }

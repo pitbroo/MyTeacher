@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pbrodziak.domain.CourseUser;
+import pl.pbrodziak.domain.User;
 import pl.pbrodziak.repository.CourseUserRepository;
+import pl.pbrodziak.repository.UserRepository;
+import pl.pbrodziak.security.SecurityUtils;
 import pl.pbrodziak.service.CourseUserQueryService;
 import pl.pbrodziak.service.CourseUserService;
 import pl.pbrodziak.service.criteria.CourseUserCriteria;
@@ -35,16 +38,19 @@ public class CourseUserResource {
 
     private final CourseUserService courseUserService;
 
+    private final UserRepository userRepository;
+
     private final CourseUserRepository courseUserRepository;
 
     private final CourseUserQueryService courseUserQueryService;
 
     public CourseUserResource(
         CourseUserService courseUserService,
-        CourseUserRepository courseUserRepository,
+        UserRepository userRepository, CourseUserRepository courseUserRepository,
         CourseUserQueryService courseUserQueryService
     ) {
         this.courseUserService = courseUserService;
+        this.userRepository = userRepository;
         this.courseUserRepository = courseUserRepository;
         this.courseUserQueryService = courseUserQueryService;
     }
@@ -59,6 +65,13 @@ public class CourseUserResource {
     @PostMapping("/course-users")
     public ResponseEntity<CourseUser> createCourseUser(@RequestBody CourseUser courseUser) throws URISyntaxException {
         log.debug("REST request to save CourseUser : {}", courseUser);
+        if (SecurityUtils.getCurrentUserLogin().isPresent()) {
+            String currnetUserLogin = SecurityUtils.getCurrentUserLogin().get();
+            if (userRepository.findOneByLogin(currnetUserLogin).isPresent()) {
+                User currnetUser = userRepository.findOneByLogin(currnetUserLogin).get();
+                courseUser.setUser(currnetUser);
+            }
+        }
         if (courseUser.getId() != null) {
             throw new BadRequestAlertException("A new courseUser cannot already have an ID", ENTITY_NAME, "idexists");
         }

@@ -42,4 +42,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findAllByIdNotNullAndActivatedIsTrue(Pageable pageable);
 
     User findOneById(LongFilter courseUserId);
+
 }
