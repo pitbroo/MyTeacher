@@ -7,6 +7,7 @@ import {CourseService} from '../service/course.service';
 import {CourseDeleteDialogComponent} from '../delete/course-delete-dialog.component';
 import {CourseUserService} from "../../course-user/service/course-user.service";
 import {CourseUser, ICourseUser} from '../../course-user/course-user.model';
+import {CourseBuyComponentComponent} from "../course-buy-component/course-buy-component.component";
 
 @Component({
   selector: 'jhi-course',
@@ -63,12 +64,17 @@ export class CourseComponent implements OnInit {
   }
 
   buyCourse(course: ICourse): void {
-    const courseUser = new CourseUser();
-    courseUser.course = course;
-    this.courseUserService.create(courseUser).subscribe((x)=> {
-      this.loadAll();
-    });
-
+    const modalRef = this.modalService.open(CourseBuyComponentComponent);
+    modalRef.componentInstance.course = course;
+    modalRef.closed.subscribe(reason =>{
+      if(reason === 'save'){
+        const courseUser = new CourseUser();
+        courseUser.course = course;
+        this.courseUserService.create(courseUser).subscribe((x)=> {
+          this.loadAll();
+        });
+      }
+    })
   }
 
 
@@ -82,4 +88,5 @@ export class CourseComponent implements OnInit {
       }
     });
   }
+
 }

@@ -1,6 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="CourseUserHeading">
-    <span jhiTranslate="myTeacherApp.courseUser.home.title">Course Users</span>
+    <span >Moi Studenci</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
@@ -8,15 +8,6 @@
         <span jhiTranslate="myTeacherApp.courseUser.home.refreshListLabel">Refresh List</span>
       </button>
 
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-course-user"
-        [routerLink]="['/course-user/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="myTeacherApp.courseUser.home.createLabel"> Create a new Course User </span>
-      </button>
     </div>
   </h2>
 
@@ -63,20 +54,6 @@
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
-              <button
-                type="submit"
-                [routerLink]="['/course-user', courseUser.id, 'edit']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-              </button>
-
-              <button type="submit" (click)="delete(courseUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-              </button>
             </div>
           </td>
         </tr>
