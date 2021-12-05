@@ -8,7 +8,7 @@
         <span jhiTranslate="myTeacherApp.lesson.home.refreshListLabel">Refresh List</span>
       </button>
 
-      <button
+      <button *jhiHasAnyAuthority="['ROLE_TEACHER','ROLE_ADMIN']"
         id="jh-create-entity"
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-lesson"
@@ -64,12 +64,14 @@
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
-              <button type="submit" [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+              <button type="submit" *jhiHasAnyAuthority="['ROLE_TEACHER','ROLE_ADMIN']"
+                      [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(lesson)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button type="submit" *jhiHasAnyAuthority="['ROLE_TEACHER','ROLE_ADMIN']"
+                      (click)="delete(lesson)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>

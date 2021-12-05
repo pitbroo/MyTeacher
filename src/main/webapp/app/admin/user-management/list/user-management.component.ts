@@ -83,6 +83,11 @@ export class UserManagementComponent implements OnInit {
       },
     });
   }
+  getRandomAvatar(): string{
+    const randomNumber = Math.random()*10;
+    const link = "https://robohash.org/"+randomNumber.toString();
+    return link;
+  }
 
   private handleNavigation(): void {
     combineLatest([this.activatedRoute.data, this.activatedRoute.queryParamMap]).subscribe(([data, params]) => {
@@ -107,4 +112,6 @@ export class UserManagementComponent implements OnInit {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.users = users;
   }
+
+
 }
