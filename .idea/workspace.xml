@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="acd55d26-855a-499f-9c42-767234b12f1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/main/main.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/main/main.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/active-menu.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/active-menu.directive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/domain/Lesson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/course-buy-component/course-buy-component.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/course-buy-component/course-buy-component.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/lesson.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/lesson.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/list/lesson.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/list/lesson.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/update/lesson-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/siadnavbar/siadnavbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/siadnavbar/siadnavbar.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

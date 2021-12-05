@@ -4,6 +4,7 @@ import { ITask } from 'app/entities/task/task.model';
 
 export interface ILesson {
   id?: number;
+  name?: string;
   status?: string | null;
   dateStart?: dayjs.Dayjs | null;
   dateEnd?: dayjs.Dayjs | null;
@@ -15,6 +16,7 @@ export interface ILesson {
 export class Lesson implements ILesson {
   constructor(
     public id?: number,
+    public name?: string,
     public status?: string | null,
     public dateStart?: dayjs.Dayjs | null,
     public dateEnd?: dayjs.Dayjs | null,

@@ -33,6 +33,7 @@
       <thead>
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span >Nazwa</span></th>
           <th scope="col"><span jhiTranslate="myTeacherApp.lesson.status">Status</span></th>
           <th scope="col"><span jhiTranslate="myTeacherApp.lesson.dateStart">Date Start</span></th>
           <th scope="col"><span jhiTranslate="myTeacherApp.lesson.dateEnd">Date End</span></th>
@@ -46,6 +47,7 @@
           <td>
             <a [routerLink]="['/lesson', lesson.id, 'view']">{{ lesson.id }}</a>
           </td>
+          <td>{{ lesson.name }}</td>
           <td>{{ lesson.status }}</td>
           <td>{{ lesson.dateStart | formatMediumDate }}</td>
           <td>{{ lesson.dateEnd | formatMediumDate }}</td>

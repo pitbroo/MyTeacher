@@ -21,6 +21,7 @@ export class LessonUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    name: [],
     status: [],
     dateStart: [],
     dateEnd: [],
@@ -83,6 +84,7 @@ export class LessonUpdateComponent implements OnInit {
   protected updateForm(lesson: ILesson): void {
     this.editForm.patchValue({
       id: lesson.id,
+      name: lesson.name,
       status: lesson.status,
       dateStart: lesson.dateStart,
       dateEnd: lesson.dateEnd,
@@ -105,6 +107,7 @@ export class LessonUpdateComponent implements OnInit {
     return {
       ...new Lesson(),
       id: this.editForm.get(['id'])!.value,
+      name: this.editForm.get(['name'])!.value,
       status: this.editForm.get(['status'])!.value,
       dateStart: this.editForm.get(['dateStart'])!.value,
       dateEnd: this.editForm.get(['dateEnd'])!.value,

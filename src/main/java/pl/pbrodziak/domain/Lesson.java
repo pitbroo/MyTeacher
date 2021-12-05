@@ -23,6 +23,9 @@ public class Lesson implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "status")
     private String status;
 
@@ -77,6 +80,19 @@ public class Lesson implements Serializable {
 
     public Lesson dateStart(LocalDate dateStart) {
         this.dateStart = dateStart;
+        return this;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Lesson setName(String name) {
+        this.name = name;
         return this;
     }
 
