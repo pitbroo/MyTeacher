@@ -1,8 +1,9 @@
 package pl.pbrodziak.service;
 
+import pl.pbrodziak.domain.Lesson;
+
 import java.util.List;
 import java.util.Optional;
-import pl.pbrodziak.domain.Lesson;
 
 /**
  * Service Interface for managing {@link Lesson}.
@@ -45,4 +46,6 @@ public interface LessonService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<Lesson> findAllMyLesson(String userRole);
 }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pbrodziak.domain.Lesson;
+import pl.pbrodziak.domain.User;
 import pl.pbrodziak.repository.LessonRepository;
 import pl.pbrodziak.service.LessonService;
 
@@ -76,5 +77,15 @@ public class LessonServiceImpl implements LessonService {
     public void delete(Long id) {
         log.debug("Request to delete Lesson : {}", id);
         lessonRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Lesson> findAllMyLesson(String userRole) {
+        if (userRole.equals("ROLE_USER")){
+            return lessonRepository.findAllMyLessonUser();
+        }
+        else {
+            return lessonRepository.findAllMyLessonTeacher();
+        }
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pbrodziak.domain.Lesson;
 import pl.pbrodziak.repository.LessonRepository;
+import pl.pbrodziak.security.SecurityUtils;
 import pl.pbrodziak.service.LessonQueryService;
 import pl.pbrodziak.service.LessonService;
 import pl.pbrodziak.service.criteria.LessonCriteria;
@@ -142,7 +143,15 @@ public class LessonResource {
     @GetMapping("/lessons")
     public ResponseEntity<List<Lesson>> getAllLessons(LessonCriteria criteria) {
         log.debug("REST request to get Lessons by criteria: {}", criteria);
-        List<Lesson> entityList = lessonQueryService.findByCriteria(criteria);
+        List<Lesson> entityList = lessonService.findAllMyLesson(SecurityUtils.getCurrentUserLogin().get());
+        log.info("User role: "+SecurityUtils.getCurrentUserLogin());
+        if (SecurityUtils.getCurrentUserLogin().isPresent() && SecurityUtils.hasCurrentUserThisAuthority("ROLE_TEACHER")){
+            entityList = lessonRepository.findAllMyLessonTeacher();
+        }
+        else {
+            entityList = lessonRepository.findAllMyLessonUser();
+        }
+//        List<Lesson> entityList = lessonQueryService.findByCriteria(criteria);
         return ResponseEntity.ok().body(entityList);
     }
 
