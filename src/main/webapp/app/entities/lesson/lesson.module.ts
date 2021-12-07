@@ -7,8 +7,11 @@ import { LessonDeleteDialogComponent } from './delete/lesson-delete-dialog.compo
 import { LessonRoutingModule } from './route/lesson-routing.module';
 
 @NgModule({
-  imports: [SharedModule, LessonRoutingModule],
-  declarations: [LessonComponent, LessonDetailComponent, LessonUpdateComponent, LessonDeleteDialogComponent],
-  entryComponents: [LessonDeleteDialogComponent],
+    imports: [SharedModule, LessonRoutingModule],
+    declarations: [LessonComponent, LessonDetailComponent, LessonUpdateComponent, LessonDeleteDialogComponent],
+    entryComponents: [LessonDeleteDialogComponent],
+    exports: [
+        LessonComponent
+    ]
 })
 export class LessonModule {}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,13 +13,15 @@ import { LessonDeleteDialogComponent } from '../delete/lesson-delete-dialog.comp
 export class LessonComponent implements OnInit {
   lessons?: ILesson[];
   isLoading = false;
+  @Input()
+  courseId = 1;
 
   constructor(protected lessonService: LessonService, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.isLoading = true;
 
-    this.lessonService.query().subscribe(
+    this.lessonService.queryWithParam(this.courseId).subscribe(
       (res: HttpResponse<ILesson[]>) => {
         this.isLoading = false;
         this.lessons = res.body ?? [];

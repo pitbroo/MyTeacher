@@ -21,9 +21,9 @@ public interface LessonRepository extends JpaRepository<Lesson, Long>, JpaSpecif
         "(select course.id from Course course " +
         "left join CourseUser courseUser on course.id = courseUser.course.id " +
         "left join User user on courseUser.user.id = user.id " +
-        "where user." +
-        " = " +
+        "where user.login = " +
         "?#{principal.username})")
     List<Lesson> findAllMyLessonUser();
 
+    List<Lesson> findAllByCourseId(Long courseId);
 }

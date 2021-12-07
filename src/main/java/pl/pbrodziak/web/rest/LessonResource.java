@@ -154,6 +154,11 @@ public class LessonResource {
 //        List<Lesson> entityList = lessonQueryService.findByCriteria(criteria);
         return ResponseEntity.ok().body(entityList);
     }
+    @GetMapping("/lessons/ByCourseId/{courseId}")
+    public ResponseEntity<List<Lesson>> getAllLessonsByCourse(@PathVariable Long courseId) {
+        List<Lesson> entityList = lessonRepository.findAllByCourseId(courseId);
+        return ResponseEntity.ok().body(entityList);
+    }
 
     /**
      * {@code GET  /lessons/count} : count all the lessons.
