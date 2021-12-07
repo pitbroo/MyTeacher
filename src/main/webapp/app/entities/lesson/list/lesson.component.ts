@@ -14,22 +14,34 @@ export class LessonComponent implements OnInit {
   lessons?: ILesson[];
   isLoading = false;
   @Input()
-  courseId = 1;
+  courseId = 0;
 
   constructor(protected lessonService: LessonService, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.isLoading = true;
-
-    this.lessonService.queryWithParam(this.courseId).subscribe(
-      (res: HttpResponse<ILesson[]>) => {
-        this.isLoading = false;
-        this.lessons = res.body ?? [];
-      },
-      () => {
-        this.isLoading = false;
-      }
-    );
+    if (this.courseId === 0){
+      this.lessonService.query().subscribe(
+        (res: HttpResponse<ILesson[]>) => {
+          this.isLoading = false;
+          this.lessons = res.body ?? [];
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
+    }
+    else {
+      this.lessonService.queryWithParam(this.courseId).subscribe(
+        (res: HttpResponse<ILesson[]>) => {
+          this.isLoading = false;
+          this.lessons = res.body ?? [];
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
+    }
   }
 
   ngOnInit(): void {
