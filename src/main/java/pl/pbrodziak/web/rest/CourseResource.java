@@ -65,6 +65,11 @@ public class CourseResource {
     @PostMapping("/courses")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) throws URISyntaxException {
         log.debug("REST request to save Course : {}", course);
+        if (course.getUser() == null && SecurityUtils.getCurrentUserLogin().isPresent()) {
+            String currnetLogin = SecurityUtils.getCurrentUserLogin().get();
+
+            course.setUser(userRepository.findOneByLogin(currnetLogin).get());
+        }
         if (course.getId() != null) {
             throw new BadRequestAlertException("A new course cannot already have an ID", ENTITY_NAME, "idexists");
         }

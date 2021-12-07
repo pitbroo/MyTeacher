@@ -7,7 +7,7 @@ import { finalize, map } from 'rxjs/operators';
 
 import { ICourse, Course } from '../course.model';
 import { CourseService } from '../service/course.service';
-import { IUser } from 'app/entities/user/user.model';
+import {IUser, User} from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/user.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class CourseUpdateComponent implements OnInit {
     price: [],
     category: [],
     description: [],
-    user: [],
+    user: new User(0,""),
   });
 
   constructor(

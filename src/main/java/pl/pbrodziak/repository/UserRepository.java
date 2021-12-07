@@ -43,4 +43,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findOneById(LongFilter courseUserId);
 
+
 }
