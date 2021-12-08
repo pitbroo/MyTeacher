@@ -1,4 +1,4 @@
-<div >
+<div>
   <div *ngIf="course">
     <div class="row">
 
@@ -44,14 +44,14 @@
         </dl>
       </div>
     </div>
-      <div>
-        <jhi-lesson *ngIf="course.id"  [courseId]="course.id" ></jhi-lesson>
-      </div>
+    <div class="border border mb-5 p-3">
+      <jhi-lesson *ngIf="course.id" [courseId]="course.id"></jhi-lesson>
+    </div>
     <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
       <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
     </button>
 
-    <button type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+    <button *jhiHasAnyAuthority="'ROLE_TEACHER'" type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
       <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
     </button>
   </div>

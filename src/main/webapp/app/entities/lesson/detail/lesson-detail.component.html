@@ -46,12 +46,14 @@
       </div>
 
     </div>
+    <div class="border border mb-5 p-3">
       <jhi-task [lessonId]="lesson.id"></jhi-task>
+    </div>
     <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
       <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
     </button>
 
-    <button type="button" [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary">
+    <button type="button" *jhiHasAnyAuthority="'ROLE_TEACHER'"  [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary">
       <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
     </button>
   </div>
