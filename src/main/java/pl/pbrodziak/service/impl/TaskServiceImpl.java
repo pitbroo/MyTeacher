@@ -39,6 +39,9 @@ public class TaskServiceImpl implements TaskService {
             .findById(task.getId())
             .map(
                 existingTask -> {
+                    if (task.getTitle() != null) {
+                        existingTask.setTitle(task.getTitle());
+                    }
                     if (task.getPointGrade() != null) {
                         existingTask.setPointGrade(task.getPointGrade());
                     }
@@ -47,6 +50,12 @@ public class TaskServiceImpl implements TaskService {
                     }
                     if (task.getDeadline() != null) {
                         existingTask.setDeadline(task.getDeadline());
+                    }
+                    if (task.getAttachment() != null) {
+                        existingTask.setAttachment(task.getAttachment());
+                    }
+                    if (task.getAttachmentContentType() != null) {
+                        existingTask.setAttachmentContentType(task.getAttachmentContentType());
                     }
 
                     return existingTask;

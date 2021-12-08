@@ -27,6 +27,8 @@ public class TaskCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private StringFilter title;
+
     private LongFilter pointGrade;
 
     private StringFilter content;
@@ -41,6 +43,7 @@ public class TaskCriteria implements Serializable, Criteria {
 
     public TaskCriteria(TaskCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
+        this.title = other.title == null ? null : other.title.copy();
         this.pointGrade = other.pointGrade == null ? null : other.pointGrade.copy();
         this.content = other.content == null ? null : other.content.copy();
         this.deadline = other.deadline == null ? null : other.deadline.copy();
@@ -66,6 +69,21 @@ public class TaskCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getTitle() {
+        return title;
+    }
+
+    public StringFilter title() {
+        if (title == null) {
+            title = new StringFilter();
+        }
+        return title;
+    }
+
+    public void setTitle(StringFilter title) {
+        this.title = title;
     }
 
     public LongFilter getPointGrade() {
@@ -154,6 +172,7 @@ public class TaskCriteria implements Serializable, Criteria {
         final TaskCriteria that = (TaskCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(title, that.title) &&
             Objects.equals(pointGrade, that.pointGrade) &&
             Objects.equals(content, that.content) &&
             Objects.equals(deadline, that.deadline) &&
@@ -164,7 +183,7 @@ public class TaskCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pointGrade, content, deadline, lessonId, taskSolvedId);
+        return Objects.hash(id, title, pointGrade, content, deadline, lessonId, taskSolvedId);
     }
 
     // prettier-ignore
@@ -172,6 +191,7 @@ public class TaskCriteria implements Serializable, Criteria {
     public String toString() {
         return "TaskCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
+            (title != null ? "title=" + title + ", " : "") +
             (pointGrade != null ? "pointGrade=" + pointGrade + ", " : "") +
             (content != null ? "content=" + content + ", " : "") +
             (deadline != null ? "deadline=" + deadline + ", " : "") +

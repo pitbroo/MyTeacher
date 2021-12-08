@@ -26,9 +26,12 @@ describe('Service Tests', () => {
 
       elemDefault = {
         id: 0,
+        title: 'AAAAAAA',
         pointGrade: 0,
         content: 'AAAAAAA',
         deadline: currentDate,
+        attachmentContentType: 'image/png',
+        attachment: 'AAAAAAA',
       };
     });
 
@@ -75,9 +78,11 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 1,
+            title: 'BBBBBB',
             pointGrade: 1,
             content: 'BBBBBB',
             deadline: currentDate.format(DATE_FORMAT),
+            attachment: 'BBBBBB',
           },
           elemDefault
         );
@@ -99,7 +104,7 @@ describe('Service Tests', () => {
       it('should partial update a Task', () => {
         const patchObject = Object.assign(
           {
-            deadline: currentDate.format(DATE_FORMAT),
+            content: 'BBBBBB',
           },
           new Task()
         );
@@ -124,9 +129,11 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 1,
+            title: 'BBBBBB',
             pointGrade: 1,
             content: 'BBBBBB',
             deadline: currentDate.format(DATE_FORMAT),
+            attachment: 'BBBBBB',
           },
           elemDefault
         );
@@ -183,7 +190,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Task to an array', () => {
-          const taskArray: ITask[] = [{ id: 123 }, { id: 456 }, { id: 14063 }];
+          const taskArray: ITask[] = [{ id: 123 }, { id: 456 }, { id: 97220 }];
           const taskCollection: ITask[] = [{ id: 123 }];
           expectedResult = service.addTaskToCollectionIfMissing(taskCollection, ...taskArray);
           expect(expectedResult).toHaveLength(3);

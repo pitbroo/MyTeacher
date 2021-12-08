@@ -25,7 +25,7 @@ entity Lesson {
     classroomOrAddres String
 }
 entity Task {
-    name String,
+    title String,
 	pointGrade Long,
     content String,
     deadline LocalDate,

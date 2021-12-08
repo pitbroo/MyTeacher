@@ -2,6 +2,10 @@
   "name": "Task",
   "fields": [
     {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "pointGrade",
       "fieldType": "Long"
     },
@@ -12,6 +16,11 @@
     {
       "fieldName": "deadline",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "attachment",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
     }
   ],
   "relationships": [

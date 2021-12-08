@@ -18,9 +18,11 @@
         "title": "Task"
       },
       "id": "ID",
+      "title": "Title",
       "pointGrade": "Point Grade",
       "content": "Content",
       "deadline": "Deadline",
+      "attachment": "Attachment",
       "lesson": "Lesson",
       "taskSolved": "Task Solved"
     }

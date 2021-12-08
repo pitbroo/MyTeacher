@@ -23,6 +23,9 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "point_grade")
     private Long pointGrade;
 
@@ -31,6 +34,13 @@ public class Task implements Serializable {
 
     @Column(name = "deadline")
     private LocalDate deadline;
+
+    @Lob
+    @Column(name = "attachment")
+    private byte[] attachment;
+
+    @Column(name = "attachment_content_type")
+    private String attachmentContentType;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "course", "tasks" }, allowSetters = true)
@@ -53,6 +63,19 @@ public class Task implements Serializable {
     public Task id(Long id) {
         this.id = id;
         return this;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Task title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getPointGrade() {
@@ -92,6 +115,32 @@ public class Task implements Serializable {
 
     public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
+    }
+
+    public byte[] getAttachment() {
+        return this.attachment;
+    }
+
+    public Task attachment(byte[] attachment) {
+        this.attachment = attachment;
+        return this;
+    }
+
+    public void setAttachment(byte[] attachment) {
+        this.attachment = attachment;
+    }
+
+    public String getAttachmentContentType() {
+        return this.attachmentContentType;
+    }
+
+    public Task attachmentContentType(String attachmentContentType) {
+        this.attachmentContentType = attachmentContentType;
+        return this;
+    }
+
+    public void setAttachmentContentType(String attachmentContentType) {
+        this.attachmentContentType = attachmentContentType;
     }
 
     public Lesson getLesson() {
@@ -162,9 +211,12 @@ public class Task implements Serializable {
     public String toString() {
         return "Task{" +
             "id=" + getId() +
+            ", title='" + getTitle() + "'" +
             ", pointGrade=" + getPointGrade() +
             ", content='" + getContent() + "'" +
             ", deadline='" + getDeadline() + "'" +
+            ", attachment='" + getAttachment() + "'" +
+            ", attachmentContentType='" + getAttachmentContentType() + "'" +
             "}";
     }
 }

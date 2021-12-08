@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import pl.pbrodziak.IntegrationTest;
 import pl.pbrodziak.domain.Lesson;
 import pl.pbrodziak.domain.Task;
@@ -34,6 +35,9 @@ import pl.pbrodziak.service.criteria.TaskCriteria;
 @WithMockUser
 class TaskResourceIT {
 
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
     private static final Long DEFAULT_POINT_GRADE = 1L;
     private static final Long UPDATED_POINT_GRADE = 2L;
     private static final Long SMALLER_POINT_GRADE = 1L - 1L;
@@ -44,6 +48,11 @@ class TaskResourceIT {
     private static final LocalDate DEFAULT_DEADLINE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DEADLINE = LocalDate.now(ZoneId.systemDefault());
     private static final LocalDate SMALLER_DEADLINE = LocalDate.ofEpochDay(-1L);
+
+    private static final byte[] DEFAULT_ATTACHMENT = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_ATTACHMENT = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_ATTACHMENT_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_ATTACHMENT_CONTENT_TYPE = "image/png";
 
     private static final String ENTITY_API_URL = "/api/tasks";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -69,7 +78,13 @@ class TaskResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Task createEntity(EntityManager em) {
-        Task task = new Task().pointGrade(DEFAULT_POINT_GRADE).content(DEFAULT_CONTENT).deadline(DEFAULT_DEADLINE);
+        Task task = new Task()
+            .title(DEFAULT_TITLE)
+            .pointGrade(DEFAULT_POINT_GRADE)
+            .content(DEFAULT_CONTENT)
+            .deadline(DEFAULT_DEADLINE)
+            .attachment(DEFAULT_ATTACHMENT)
+            .attachmentContentType(DEFAULT_ATTACHMENT_CONTENT_TYPE);
         return task;
     }
 
@@ -80,7 +95,13 @@ class TaskResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Task createUpdatedEntity(EntityManager em) {
-        Task task = new Task().pointGrade(UPDATED_POINT_GRADE).content(UPDATED_CONTENT).deadline(UPDATED_DEADLINE);
+        Task task = new Task()
+            .title(UPDATED_TITLE)
+            .pointGrade(UPDATED_POINT_GRADE)
+            .content(UPDATED_CONTENT)
+            .deadline(UPDATED_DEADLINE)
+            .attachment(UPDATED_ATTACHMENT)
+            .attachmentContentType(UPDATED_ATTACHMENT_CONTENT_TYPE);
         return task;
     }
 
@@ -102,9 +123,12 @@ class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTask.getPointGrade()).isEqualTo(DEFAULT_POINT_GRADE);
         assertThat(testTask.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testTask.getDeadline()).isEqualTo(DEFAULT_DEADLINE);
+        assertThat(testTask.getAttachment()).isEqualTo(DEFAULT_ATTACHMENT);
+        assertThat(testTask.getAttachmentContentType()).isEqualTo(DEFAULT_ATTACHMENT_CONTENT_TYPE);
     }
 
     @Test
@@ -137,9 +161,12 @@ class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].pointGrade").value(hasItem(DEFAULT_POINT_GRADE.intValue())))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
-            .andExpect(jsonPath("$.[*].deadline").value(hasItem(DEFAULT_DEADLINE.toString())));
+            .andExpect(jsonPath("$.[*].deadline").value(hasItem(DEFAULT_DEADLINE.toString())))
+            .andExpect(jsonPath("$.[*].attachmentContentType").value(hasItem(DEFAULT_ATTACHMENT_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].attachment").value(hasItem(Base64Utils.encodeToString(DEFAULT_ATTACHMENT))));
     }
 
     @Test
@@ -154,9 +181,12 @@ class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.pointGrade").value(DEFAULT_POINT_GRADE.intValue()))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
-            .andExpect(jsonPath("$.deadline").value(DEFAULT_DEADLINE.toString()));
+            .andExpect(jsonPath("$.deadline").value(DEFAULT_DEADLINE.toString()))
+            .andExpect(jsonPath("$.attachmentContentType").value(DEFAULT_ATTACHMENT_CONTENT_TYPE))
+            .andExpect(jsonPath("$.attachment").value(Base64Utils.encodeToString(DEFAULT_ATTACHMENT)));
     }
 
     @Test
@@ -175,6 +205,84 @@ class TaskResourceIT {
 
         defaultTaskShouldBeFound("id.lessThanOrEqual=" + id);
         defaultTaskShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleIsEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title equals to DEFAULT_TITLE
+        defaultTaskShouldBeFound("title.equals=" + DEFAULT_TITLE);
+
+        // Get all the taskList where title equals to UPDATED_TITLE
+        defaultTaskShouldNotBeFound("title.equals=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title not equals to DEFAULT_TITLE
+        defaultTaskShouldNotBeFound("title.notEquals=" + DEFAULT_TITLE);
+
+        // Get all the taskList where title not equals to UPDATED_TITLE
+        defaultTaskShouldBeFound("title.notEquals=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleIsInShouldWork() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title in DEFAULT_TITLE or UPDATED_TITLE
+        defaultTaskShouldBeFound("title.in=" + DEFAULT_TITLE + "," + UPDATED_TITLE);
+
+        // Get all the taskList where title equals to UPDATED_TITLE
+        defaultTaskShouldNotBeFound("title.in=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title is not null
+        defaultTaskShouldBeFound("title.specified=true");
+
+        // Get all the taskList where title is null
+        defaultTaskShouldNotBeFound("title.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleContainsSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title contains DEFAULT_TITLE
+        defaultTaskShouldBeFound("title.contains=" + DEFAULT_TITLE);
+
+        // Get all the taskList where title contains UPDATED_TITLE
+        defaultTaskShouldNotBeFound("title.contains=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllTasksByTitleNotContainsSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where title does not contain DEFAULT_TITLE
+        defaultTaskShouldNotBeFound("title.doesNotContain=" + DEFAULT_TITLE);
+
+        // Get all the taskList where title does not contain UPDATED_TITLE
+        defaultTaskShouldBeFound("title.doesNotContain=" + UPDATED_TITLE);
     }
 
     @Test
@@ -510,9 +618,12 @@ class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].pointGrade").value(hasItem(DEFAULT_POINT_GRADE.intValue())))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
-            .andExpect(jsonPath("$.[*].deadline").value(hasItem(DEFAULT_DEADLINE.toString())));
+            .andExpect(jsonPath("$.[*].deadline").value(hasItem(DEFAULT_DEADLINE.toString())))
+            .andExpect(jsonPath("$.[*].attachmentContentType").value(hasItem(DEFAULT_ATTACHMENT_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].attachment").value(hasItem(Base64Utils.encodeToString(DEFAULT_ATTACHMENT))));
 
         // Check, that the count call also returns 1
         restTaskMockMvc
@@ -560,7 +671,13 @@ class TaskResourceIT {
         Task updatedTask = taskRepository.findById(task.getId()).get();
         // Disconnect from session so that the updates on updatedTask are not directly saved in db
         em.detach(updatedTask);
-        updatedTask.pointGrade(UPDATED_POINT_GRADE).content(UPDATED_CONTENT).deadline(UPDATED_DEADLINE);
+        updatedTask
+            .title(UPDATED_TITLE)
+            .pointGrade(UPDATED_POINT_GRADE)
+            .content(UPDATED_CONTENT)
+            .deadline(UPDATED_DEADLINE)
+            .attachment(UPDATED_ATTACHMENT)
+            .attachmentContentType(UPDATED_ATTACHMENT_CONTENT_TYPE);
 
         restTaskMockMvc
             .perform(
@@ -574,9 +691,12 @@ class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTask.getPointGrade()).isEqualTo(UPDATED_POINT_GRADE);
         assertThat(testTask.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testTask.getDeadline()).isEqualTo(UPDATED_DEADLINE);
+        assertThat(testTask.getAttachment()).isEqualTo(UPDATED_ATTACHMENT);
+        assertThat(testTask.getAttachmentContentType()).isEqualTo(UPDATED_ATTACHMENT_CONTENT_TYPE);
     }
 
     @Test
@@ -647,7 +767,7 @@ class TaskResourceIT {
         Task partialUpdatedTask = new Task();
         partialUpdatedTask.setId(task.getId());
 
-        partialUpdatedTask.content(UPDATED_CONTENT);
+        partialUpdatedTask.pointGrade(UPDATED_POINT_GRADE).deadline(UPDATED_DEADLINE);
 
         restTaskMockMvc
             .perform(
@@ -661,9 +781,12 @@ class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
-        assertThat(testTask.getPointGrade()).isEqualTo(DEFAULT_POINT_GRADE);
-        assertThat(testTask.getContent()).isEqualTo(UPDATED_CONTENT);
-        assertThat(testTask.getDeadline()).isEqualTo(DEFAULT_DEADLINE);
+        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testTask.getPointGrade()).isEqualTo(UPDATED_POINT_GRADE);
+        assertThat(testTask.getContent()).isEqualTo(DEFAULT_CONTENT);
+        assertThat(testTask.getDeadline()).isEqualTo(UPDATED_DEADLINE);
+        assertThat(testTask.getAttachment()).isEqualTo(DEFAULT_ATTACHMENT);
+        assertThat(testTask.getAttachmentContentType()).isEqualTo(DEFAULT_ATTACHMENT_CONTENT_TYPE);
     }
 
     @Test
@@ -678,7 +801,13 @@ class TaskResourceIT {
         Task partialUpdatedTask = new Task();
         partialUpdatedTask.setId(task.getId());
 
-        partialUpdatedTask.pointGrade(UPDATED_POINT_GRADE).content(UPDATED_CONTENT).deadline(UPDATED_DEADLINE);
+        partialUpdatedTask
+            .title(UPDATED_TITLE)
+            .pointGrade(UPDATED_POINT_GRADE)
+            .content(UPDATED_CONTENT)
+            .deadline(UPDATED_DEADLINE)
+            .attachment(UPDATED_ATTACHMENT)
+            .attachmentContentType(UPDATED_ATTACHMENT_CONTENT_TYPE);
 
         restTaskMockMvc
             .perform(
@@ -692,9 +821,12 @@ class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTask.getPointGrade()).isEqualTo(UPDATED_POINT_GRADE);
         assertThat(testTask.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testTask.getDeadline()).isEqualTo(UPDATED_DEADLINE);
+        assertThat(testTask.getAttachment()).isEqualTo(UPDATED_ATTACHMENT);
+        assertThat(testTask.getAttachmentContentType()).isEqualTo(UPDATED_ATTACHMENT_CONTENT_TYPE);
     }
 
     @Test

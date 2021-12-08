@@ -4,13 +4,19 @@
       <h2 data-cy="taskDetailsHeading"><span jhiTranslate="myTeacherApp.task.detail.title">Task</span></h2>
 
       <hr />
+
       <jhi-alert-error></jhi-alert-error>
+
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="global.field.id">ID</span></dt>
         <dd>
           <span>{{ task.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myTeacherApp.task.title">Title</span></dt>
+        <dd>
+          <span>{{ task.title }}</span>
         </dd>
         <dt><span jhiTranslate="myTeacherApp.task.pointGrade">Point Grade</span></dt>
         <dd>
@@ -24,6 +30,13 @@
         <dd>
           <span>{{ task.deadline | formatMediumDate }}</span>
         </dd>
+        <dt><span jhiTranslate="myTeacherApp.task.attachment">Attachment</span></dt>
+        <dd>
+          <div *ngIf="task.attachment">
+            <a (click)="openFile(task.attachment, task.attachmentContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ task.attachmentContentType }}, {{ byteSize(task.attachment) }}
+          </div>
+        </dd>
         <dt><span jhiTranslate="myTeacherApp.task.lesson">Lesson</span></dt>
         <dd>
           <div *ngIf="task.lesson">
@@ -31,10 +44,6 @@
           </div>
         </dd>
       </dl>
-      <div>
-
-      </div>
-
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>

@@ -7,6 +7,9 @@ import { finalize, map } from 'rxjs/operators';
 
 import { ITask, Task } from '../task.model';
 import { TaskService } from '../service/task.service';
+import { AlertError } from 'app/shared/alert/alert-error.model';
+import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
+import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { ILesson } from 'app/entities/lesson/lesson.model';
 import { LessonService } from 'app/entities/lesson/service/lesson.service';
 
@@ -21,13 +24,18 @@ export class TaskUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    title: [],
     pointGrade: [],
     content: [],
     deadline: [],
+    attachment: [],
+    attachmentContentType: [],
     lesson: [],
   });
 
   constructor(
+    protected dataUtils: DataUtils,
+    protected eventManager: EventManager,
     protected taskService: TaskService,
     protected lessonService: LessonService,
     protected activatedRoute: ActivatedRoute,
@@ -39,6 +47,21 @@ export class TaskUpdateComponent implements OnInit {
       this.updateForm(task);
 
       this.loadRelationshipsOptions();
+    });
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    this.dataUtils.openFile(base64String, contentType);
+  }
+
+  setFileData(event: Event, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
+      error: (err: FileLoadError) =>
+        this.eventManager.broadcast(new EventWithContent<AlertError>('myTeacherApp.error', { ...err, key: 'error.file.' + err.key })),
     });
   }
 
@@ -82,9 +105,12 @@ export class TaskUpdateComponent implements OnInit {
   protected updateForm(task: ITask): void {
     this.editForm.patchValue({
       id: task.id,
+      title: task.title,
       pointGrade: task.pointGrade,
       content: task.content,
       deadline: task.deadline,
+      attachment: task.attachment,
+      attachmentContentType: task.attachmentContentType,
       lesson: task.lesson,
     });
 
@@ -103,9 +129,12 @@ export class TaskUpdateComponent implements OnInit {
     return {
       ...new Task(),
       id: this.editForm.get(['id'])!.value,
+      title: this.editForm.get(['title'])!.value,
       pointGrade: this.editForm.get(['pointGrade'])!.value,
       content: this.editForm.get(['content'])!.value,
       deadline: this.editForm.get(['deadline'])!.value,
+      attachmentContentType: this.editForm.get(['attachmentContentType'])!.value,
+      attachment: this.editForm.get(['attachment'])!.value,
       lesson: this.editForm.get(['lesson'])!.value,
     };
   }

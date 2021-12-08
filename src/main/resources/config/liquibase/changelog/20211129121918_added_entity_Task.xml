@@ -14,6 +14,9 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="point_grade" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -21,6 +24,12 @@
                 <constraints nullable="true" />
             </column>
             <column name="deadline" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="attachment" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="attachment_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="lesson_id" type="bigint">
@@ -46,9 +55,12 @@
                   separator=";"
                   tableName="task">
             <column name="id" type="numeric"/>
+            <column name="title" type="string"/>
             <column name="point_grade" type="numeric"/>
             <column name="content" type="string"/>
             <column name="deadline" type="date"/>
+            <column name="attachment" type="blob"/>
+            <column name="attachment_content_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

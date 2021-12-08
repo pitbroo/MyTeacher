@@ -48,8 +48,7 @@ export class TaskService {
 
   query(id?: any,req?: any): Observable<EntityArrayResponseType> {
     let param: string;
-    id !== undefined ? param = id.toString() : param = "";
-    const options = createRequestOption(req);
+    id !== undefined ? param = id.toString() : param = "";    const options = createRequestOption(req);
     return this.http
       .get<ITask[]>(this.resourceUrl+'?lessonId.equals='+param, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
