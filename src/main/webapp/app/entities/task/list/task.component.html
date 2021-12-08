@@ -59,7 +59,7 @@
           </td>
           <td>
             <div *ngIf="task.lesson">
-              <a [routerLink]="['/lesson', task.lesson?.id, 'view']">{{ task.lesson?.id }}</a>
+              <a [routerLink]="['/lesson', task.lesson?.id, 'view']">{{ task.lesson?.name }}</a>
             </div>
           </td>
           <td class="text-right">

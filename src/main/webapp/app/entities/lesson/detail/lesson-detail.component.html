@@ -12,19 +12,19 @@
       </div>
       <div class="col-5">
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dt><span >ID</span></dt>
           <dd>
             <span>{{ lesson.id }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.lesson.status">Status</span></dt>
+          <dt><span >Status</span></dt>
           <dd>
             <span>{{ lesson.status }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.lesson.dateStart">Date Start</span></dt>
+          <dt><span >Data Startu</span></dt>
           <dd>
             <span>{{ lesson.dateStart | formatMediumDate }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.lesson.dateEnd">Date End</span></dt>
+          <dt><span >Data Zakończenia</span></dt>
           <dd>
             <span>{{ lesson.dateEnd | formatMediumDate }}</span>
           </dd>
@@ -32,11 +32,11 @@
       </div>
       <div class="col-5">
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="myTeacherApp.lesson.classroomOrAddres">Classroom Or Addres</span></dt>
+          <dt><span >Miejsce/Link</span></dt>
           <dd>
             <span>{{ lesson.classroomOrAddres }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.lesson.course">Course</span></dt>
+          <dt><span >Kurs</span></dt>
           <dd>
             <div *ngIf="lesson.course">
               <a [routerLink]="['/course', lesson.course?.id, 'view']">{{ lesson.course?.name }}</a>

@@ -2,13 +2,13 @@
   <div class="d-flex justify-content-end">
     <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
       <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-      <span jhiTranslate="myTeacherApp.course.home.refreshListLabel">Refresh List</span>
+      <span jhiTranslate="myTeacherApp.course.home.refreshListLabel">Odśwież</span>
     </button>
   </div>
   <!--My Courses-->
   <div *jhiHasAnyAuthority="'ROLE_USER'">
     <h2 id="page-heading" data-cy="CourseHeading">
-      <span>My bought courses</span>
+      <span>Moje kursy</span>
 
       <div class="d-flex justify-content-end">
 
@@ -90,10 +90,9 @@
   <!--All courses-->
   <div>
     <h2 id="page-heading" data-cy="CourseHeading">
-      <span *jhiHasAnyAuthority="['ROLE_USER','ROLE_ADMIN']"
-            jhiTranslate="myTeacherApp.course.home.title">Courses</span>
+      <span *jhiHasAnyAuthority="['ROLE_USER','ROLE_ADMIN']">Kursy</span>
       <!--    <h2 id="page-heading" data-cy="CourseHeading">-->
-      <span *jhiHasAnyAuthority="['ROLE_TEACHER']">My courses</span>
+      <span *jhiHasAnyAuthority="['ROLE_TEACHER']">Moje kursy</span>
 
       <div class="d-flex justify-content-end">
 
