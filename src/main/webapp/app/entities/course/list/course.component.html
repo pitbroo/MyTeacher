@@ -37,12 +37,12 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
         <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.name">Name</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.value">Value</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.price">Price</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.category">Category</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.description">Description</span></th>
+          <th scope="col"><span >ID</span></th>
+          <th scope="col"><span >Nazwa</span></th>
+          <th scope="col"><span >Wartość</span></th>
+          <th scope="col"><span >Cena</span></th>
+          <th scope="col"><span >Kategoria</span></th>
+          <th scope="col"><span >Opis</span></th>
           <th scope="col"><span>Instruktor</span></th>
           <!--          <th scope="col"><span jhiTranslate="myTeacherApp.course.user">User</span></th>-->
           <th scope="col"></th>
@@ -117,12 +117,12 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
         <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.name">Name</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.value">Value</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.price">Price</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.category">Category</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.course.description">Description</span></th>
+          <th scope="col"><span >ID</span></th>
+          <th scope="col"><span >Nazwa</span></th>
+          <th scope="col"><span >Wartość</span></th>
+          <th scope="col"><span >Cena</span></th>
+          <th scope="col"><span >Kategoria</span></th>
+          <th scope="col"><span >Opis</span></th>
           <th scope="col"><span>Instruktor</span></th>
           <!--          <th scope="col"><span jhiTranslate="myTeacherApp.course.user">User</span></th>-->
           <th scope="col"></th>
@@ -144,6 +144,7 @@
           <td class="text-right">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/course', course.id, 'view']" class="btn btn-info btn-sm"
+                      *jhiHasAnyAuthority="'ROLE_TEACHER'"
                       data-cy="entityDetailsButton">
                 <fa-icon icon="eye"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>

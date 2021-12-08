@@ -1,6 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="TaskSolvedHeading">
-    <span jhiTranslate="myTeacherApp.taskSolved.home.title">Task Solveds</span>
+    <span>Rozwiązania</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
@@ -15,7 +15,7 @@
         [routerLink]="['/task-solved/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="myTeacherApp.taskSolved.home.createLabel"> Create a new Task Solved </span>
+        <span>Dodaj rozwiązanie</span>
       </button>
     </div>
   </h2>
@@ -32,15 +32,15 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.pointGrade">Point Grade</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.content">Content</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.deadline">Deadline</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.sendDay">Send Day</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.answer">Answer</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.attachment">Attachment</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.user">User</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.taskSolved.task">Task</span></th>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Punkty</span></th>
+          <th scope="col"><span>Treść</span></th>
+          <th scope="col"><span>Deadline</span></th>
+          <th scope="col"><span>Dzień wysłania</span></th>
+          <th scope="col"><span>Odpowiedź</span></th>
+          <th scope="col"><span>Załącznik</span></th>
+          <th scope="col"><span>Użytkownik</span></th>
+          <th scope="col"><span>Zadanie</span></th>
           <th scope="col"></th>
         </tr>
       </thead>

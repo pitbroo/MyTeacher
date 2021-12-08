@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="taskSolved">
-      <h2 data-cy="taskSolvedDetailsHeading"><span jhiTranslate="myTeacherApp.taskSolved.detail.title">Task Solved</span></h2>
+      <h2 data-cy="taskSolvedDetailsHeading"><span>Rozwiązanie</span></h2>
 
       <hr />
 
@@ -10,42 +10,42 @@
       <jhi-alert></jhi-alert>
 
       <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dt><span>ID</span></dt>
         <dd>
           <span>{{ taskSolved.id }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.pointGrade">Point Grade</span></dt>
+        <dt><span>Wartość punktowa</span></dt>
         <dd>
           <span>{{ taskSolved.pointGrade }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.content">Content</span></dt>
+        <dt><span>Treść</span></dt>
         <dd>
           <span>{{ taskSolved.content }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.deadline">Deadline</span></dt>
+        <dt><span>Deadline</span></dt>
         <dd>
           <span>{{ taskSolved.deadline | formatMediumDate }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.sendDay">Send Day</span></dt>
+        <dt><span>Dzień wysłania</span></dt>
         <dd>
           <span>{{ taskSolved.sendDay | formatMediumDate }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.answer">Answer</span></dt>
+        <dt><span>Odpowiedź</span></dt>
         <dd>
           <span>{{ taskSolved.answer }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.attachment">Attachment</span></dt>
+        <dt><span>Załącznik</span></dt>
         <dd>
           <div *ngIf="taskSolved.attachment">
             <a (click)="openFile(taskSolved.attachment, taskSolved.attachmentContentType)" jhiTranslate="entity.action.open">open</a>
             {{ taskSolved.attachmentContentType }}, {{ byteSize(taskSolved.attachment) }}
           </div>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.user">User</span></dt>
+        <dt><span>Użytkownik</span></dt>
         <dd>
           <span>{{ taskSolved.user?.login }}</span>
         </dd>
-        <dt><span jhiTranslate="myTeacherApp.taskSolved.task">Task</span></dt>
+        <dt><span>Zadanie</span></dt>
         <dd>
           <div *ngIf="taskSolved.task">
             <a [routerLink]="['/task', taskSolved.task?.id, 'view']">{{ taskSolved.task?.id }}</a>

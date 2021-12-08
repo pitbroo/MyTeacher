@@ -3,10 +3,10 @@
     <div class="row" >
 
       <div class="col-4">
-        <h2 data-cy="taskDetailsHeading"><span jhiTranslate="myTeacherApp.task.detail.title">Task</span></h2>
+        <h2 data-cy="taskDetailsHeading"><span >Zadanie</span></h2>
         <hr/>
         <h5>
-          <p jhiTranslate="myTeacherApp.task.title">Title</p>
+          <p>Tytuł</p>
         </h5>
         <h4>
           {{ task.title }}
@@ -16,15 +16,15 @@
       <jhi-alert></jhi-alert>
       <div class="col-4">
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dt><span >ID</span></dt>
           <dd>
             <span>{{ task.id }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.task.pointGrade">Point Grade</span></dt>
+          <dt><span >Wartość punktów</span></dt>
           <dd>
             <span>{{ task.pointGrade }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.task.attachment">Attachment</span></dt>
+          <dt><span>Załącznik</span></dt>
           <dd>
             <div *ngIf="task.attachment">
               <a (click)="openFile(task.attachment, task.attachmentContentType)"
@@ -36,15 +36,15 @@
       </div>
       <div class="col-4">
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="myTeacherApp.task.content">Content</span></dt>
+          <dt><span >Treść</span></dt>
           <dd>
             <span>{{ task.content }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.task.deadline">Deadline</span></dt>
+          <dt><span >Deadline</span></dt>
           <dd>
             <span>{{ task.deadline | formatMediumDate }}</span>
           </dd>
-          <dt><span jhiTranslate="myTeacherApp.task.lesson">Lesson</span></dt>
+          <dt><span>Lekcja</span></dt>
           <dd>
             <div *ngIf="task.lesson">
               <a [routerLink]="['/lesson', task.lesson?.id, 'view']">{{ task.lesson?.name }}</a>

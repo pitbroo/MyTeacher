@@ -1,6 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="TaskHeading">
-    <span jhiTranslate="myTeacherApp.task.home.title">Tasks</span>
+    <span >Zadania</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
@@ -9,13 +9,14 @@
       </button>
 
       <button
+        *jhiHasAnyAuthority="'ROLE_TEACHER'"
         id="jh-create-entity"
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-task"
         [routerLink]="['/task/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="myTeacherApp.task.home.createLabel"> Create a new Task </span>
+        <span> Dodaj nowe zadanie </span>
       </button>
     </div>
   </h2>
@@ -32,13 +33,13 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.title">Title</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.pointGrade">Point Grade</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.content">Content</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.deadline">Deadline</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.attachment">Attachment</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.task.lesson">Lesson</span></th>
+          <th scope="col"><span >ID</span></th>
+          <th scope="col"><span >Tytuł</span></th>
+          <th scope="col"><span >Ilość punktów</span></th>
+          <th scope="col"><span >Treść</span></th>
+          <th scope="col"><span >Deadline</span></th>
+          <th scope="col"><span >Załącnzik</span></th>
+          <th scope="col"><span >Lekcja</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -69,12 +70,16 @@
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
-              <button type="submit" [routerLink]="['/task', task.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+              <button
+                *jhiHasAnyAuthority="'ROLE_TEACHER'"
+                type="submit" [routerLink]="['/task', task.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(task)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button
+                *jhiHasAnyAuthority="'ROLE_TEACHER'"
+                type="submit" (click)="delete(task)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>
