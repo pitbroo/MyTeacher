@@ -25,9 +25,11 @@ entity Lesson {
     classroomOrAddres String
 }
 entity Task {
+    name String,
 	pointGrade Long,
     content String,
-    deadline LocalDate
+    deadline LocalDate,
+    attachment Blob
 }
 entity TaskSolved {
 	pointGrade Long,
