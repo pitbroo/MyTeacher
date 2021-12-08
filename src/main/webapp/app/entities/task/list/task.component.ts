@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,13 +13,14 @@ import { TaskDeleteDialogComponent } from '../delete/task-delete-dialog.componen
 export class TaskComponent implements OnInit {
   tasks?: ITask[];
   isLoading = false;
+  @Input()
+  lessonId?: number;
 
   constructor(protected taskService: TaskService, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.isLoading = true;
-
-    this.taskService.query().subscribe(
+    this.taskService.query(this.lessonId).subscribe(
       (res: HttpResponse<ITask[]>) => {
         this.isLoading = false;
         this.tasks = res.body ?? [];

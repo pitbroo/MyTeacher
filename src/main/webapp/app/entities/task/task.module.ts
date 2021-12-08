@@ -7,8 +7,11 @@ import { TaskDeleteDialogComponent } from './delete/task-delete-dialog.component
 import { TaskRoutingModule } from './route/task-routing.module';
 
 @NgModule({
-  imports: [SharedModule, TaskRoutingModule],
-  declarations: [TaskComponent, TaskDetailComponent, TaskUpdateComponent, TaskDeleteDialogComponent],
-  entryComponents: [TaskDeleteDialogComponent],
+    imports: [SharedModule, TaskRoutingModule],
+    declarations: [TaskComponent, TaskDetailComponent, TaskUpdateComponent, TaskDeleteDialogComponent],
+    entryComponents: [TaskDeleteDialogComponent],
+    exports: [
+        TaskComponent
+    ]
 })
 export class TaskModule {}

@@ -5,9 +5,10 @@ import { LessonDetailComponent } from './detail/lesson-detail.component';
 import { LessonUpdateComponent } from './update/lesson-update.component';
 import { LessonDeleteDialogComponent } from './delete/lesson-delete-dialog.component';
 import { LessonRoutingModule } from './route/lesson-routing.module';
+import {TaskModule} from "../task/task.module";
 
 @NgModule({
-    imports: [SharedModule, LessonRoutingModule],
+    imports: [SharedModule, LessonRoutingModule, TaskModule],
     declarations: [LessonComponent, LessonDetailComponent, LessonUpdateComponent, LessonDeleteDialogComponent],
     entryComponents: [LessonDeleteDialogComponent],
     exports: [

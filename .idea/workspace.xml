@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="acd55d26-855a-499f-9c42-767234b12f1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/CourseResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/CourseResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/update/course-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/detail/lesson-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/detail/lesson-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/lesson.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/lesson.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task/list/task.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task/list/task.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task/service/task.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task/service/task.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task/task.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task/task.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,15 +65,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

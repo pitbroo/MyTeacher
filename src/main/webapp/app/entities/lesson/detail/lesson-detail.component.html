@@ -1,50 +1,57 @@
-<div class="row justify-content-center">
-  <div class="col-8">
-    <div *ngIf="lesson">
-      <h2 data-cy="lessonDetailsHeading"><span jhiTranslate="myTeacherApp.lesson.detail.title">Lesson</span></h2>
 
-      <hr />
+  <div *ngIf="lesson">
 
-      <jhi-alert-error></jhi-alert-error>
 
-      <jhi-alert></jhi-alert>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+      <div class="col-2">
+        <h2 data-cy="lessonDetailsHeading"><span jhiTranslate="myTeacherApp.lesson.detail.title">Lesson</span></h2>
+        <h4>{{lesson.name}}</h4>
+        <hr/>
+      </div>
+      <div class="col-5">
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ lesson.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="myTeacherApp.lesson.status">Status</span></dt>
+          <dd>
+            <span>{{ lesson.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="myTeacherApp.lesson.dateStart">Date Start</span></dt>
+          <dd>
+            <span>{{ lesson.dateStart | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="myTeacherApp.lesson.dateEnd">Date End</span></dt>
+          <dd>
+            <span>{{ lesson.dateEnd | formatMediumDate }}</span>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-5">
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="myTeacherApp.lesson.classroomOrAddres">Classroom Or Addres</span></dt>
+          <dd>
+            <span>{{ lesson.classroomOrAddres }}</span>
+          </dd>
+          <dt><span jhiTranslate="myTeacherApp.lesson.course">Course</span></dt>
+          <dd>
+            <div *ngIf="lesson.course">
+              <a [routerLink]="['/course', lesson.course?.id, 'view']">{{ lesson.course?.name }}</a>
+            </div>
+          </dd>
+        </dl>
+      </div>
 
-      <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="global.field.id">ID</span></dt>
-        <dd>
-          <span>{{ lesson.id }}</span>
-        </dd>
-        <dt><span jhiTranslate="myTeacherApp.lesson.status">Status</span></dt>
-        <dd>
-          <span>{{ lesson.status }}</span>
-        </dd>
-        <dt><span jhiTranslate="myTeacherApp.lesson.dateStart">Date Start</span></dt>
-        <dd>
-          <span>{{ lesson.dateStart | formatMediumDate }}</span>
-        </dd>
-        <dt><span jhiTranslate="myTeacherApp.lesson.dateEnd">Date End</span></dt>
-        <dd>
-          <span>{{ lesson.dateEnd | formatMediumDate }}</span>
-        </dd>
-        <dt><span jhiTranslate="myTeacherApp.lesson.classroomOrAddres">Classroom Or Addres</span></dt>
-        <dd>
-          <span>{{ lesson.classroomOrAddres }}</span>
-        </dd>
-        <dt><span jhiTranslate="myTeacherApp.lesson.course">Course</span></dt>
-        <dd>
-          <div *ngIf="lesson.course">
-            <a [routerLink]="['/course', lesson.course?.id, 'view']">{{ lesson.course?.name }}</a>
-          </div>
-        </dd>
-      </dl>
-
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-      </button>
-
-      <button type="button" [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-      </button>
     </div>
+      <jhi-task [lessonId]="lesson.id"></jhi-task>
+    <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+      <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+    </button>
+
+    <button type="button" [routerLink]="['/lesson', lesson.id, 'edit']" class="btn btn-primary">
+      <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+    </button>
   </div>
-</div>
