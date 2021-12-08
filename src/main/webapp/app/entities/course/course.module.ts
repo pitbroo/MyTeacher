@@ -10,7 +10,10 @@ import {LessonModule} from "../lesson/lesson.module";
 
 @NgModule({
     imports: [SharedModule, CourseRoutingModule, LessonModule],
-  declarations: [CourseComponent, CourseDetailComponent, CourseUpdateComponent, CourseDeleteDialogComponent, CourseBuyComponentComponent],
-  entryComponents: [CourseDeleteDialogComponent],
+    declarations: [CourseComponent, CourseDetailComponent, CourseUpdateComponent, CourseDeleteDialogComponent, CourseBuyComponentComponent],
+    entryComponents: [CourseDeleteDialogComponent],
+    exports: [
+        CourseComponent
+    ]
 })
 export class CourseModule {}
