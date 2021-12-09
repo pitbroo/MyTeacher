@@ -60,10 +60,10 @@
             </div>
           </td>
           <td class="text-right">
-            <div class="btn-group">
+            <div >
               <button type="submit" [routerLink]="['/lesson', lesson.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                <span class="d-none d-md-inline" >Otwórz</span>
               </button>
 
               <button type="submit" *jhiHasAnyAuthority="['ROLE_TEACHER','ROLE_ADMIN']"

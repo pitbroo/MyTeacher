@@ -1,4 +1,4 @@
-<div>
+<div class="col-6">
   <h2 id="page-heading" data-cy="PaymentHeading">
     <span jhiTranslate="myTeacherApp.payment.home.title">Payments</span>
 
@@ -52,7 +52,7 @@
             </div>
           </td>
           <td class="text-right">
-            <div class="btn-group">
+            <div >
               <button
                 type="submit"
                 [routerLink]="['/payment', payment.id, 'view']"
@@ -60,7 +60,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                <span class="d-none d-md-inline" >Otwórz</span>
               </button>
 
               <button

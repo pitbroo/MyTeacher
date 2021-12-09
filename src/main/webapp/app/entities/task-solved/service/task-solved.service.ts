@@ -46,10 +46,12 @@ export class TaskSolvedService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  query(req?: any): Observable<EntityArrayResponseType> {
+  query(id: any, req?: any): Observable<EntityArrayResponseType> {
+    let param: string;
+    id !== undefined ? param = id.toString() : param ="";
     const options = createRequestOption(req);
     return this.http
-      .get<ITaskSolved[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .get<ITaskSolved[]>(this.resourceUrl+"?taskId.equals="+param, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

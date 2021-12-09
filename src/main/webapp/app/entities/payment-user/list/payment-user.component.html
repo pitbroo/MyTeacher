@@ -52,7 +52,7 @@
             {{ paymentUser.user?.id }}
           </td>
           <td class="text-right">
-            <div class="btn-group">
+            <div >
               <button
                 type="submit"
                 [routerLink]="['/payment-user', paymentUser.id, 'view']"
@@ -60,7 +60,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                <span class="d-none d-md-inline" >Otwórz</span>
               </button>
 
               <button

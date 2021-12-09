@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,13 +14,15 @@ import { DataUtils } from 'app/core/util/data-util.service';
 export class TaskSolvedComponent implements OnInit {
   taskSolveds?: ITaskSolved[];
   isLoading = false;
+  @Input()
+  taskId?: any = "";
 
   constructor(protected taskSolvedService: TaskSolvedService, protected dataUtils: DataUtils, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.isLoading = true;
 
-    this.taskSolvedService.query().subscribe(
+    this.taskSolvedService.query(this.taskId).subscribe(
       (res: HttpResponse<ITaskSolved[]>) => {
         this.isLoading = false;
         this.taskSolveds = res.body ?? [];

@@ -17,8 +17,8 @@
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
         </div>
 
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.pointGrade" for="field_pointGrade">Point Grade</label>
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+          <label class="form-control-label"  for="field_pointGrade">liczba punktów</label>
           <input
             type="number"
             class="form-control"
@@ -30,12 +30,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.content" for="field_content">Content</label>
+          <label class="form-control-label"  for="field_content">Tytuł</label>
           <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
         </div>
 
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.deadline" for="field_deadline">Deadline</label>
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+          <label class="form-control-label"  for="field_deadline">Deadline</label>
           <div class="input-group">
             <input
               id="field_deadline"
@@ -53,8 +53,8 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.sendDay" for="field_sendDay">Send Day</label>
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+          <label class="form-control-label"  for="field_sendDay">Send Day</label>
           <div class="input-group">
             <input
               id="field_sendDay"
@@ -73,12 +73,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.answer" for="field_answer">Answer</label>
+          <label class="form-control-label" for="field_answer">Odpowiedź</label>
           <input type="text" class="form-control" name="answer" id="field_answer" data-cy="answer" formControlName="answer" />
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.attachment" for="field_attachment">Attachment</label>
+          <label class="form-control-label" for="field_attachment">Załącznik</label>
           <div>
             <div *ngIf="editForm.get('attachment')!.value" class="form-text text-danger clearfix">
               <a
@@ -123,7 +123,7 @@
           />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
           <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.user" for="field_user">User</label>
           <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
             <option [ngValue]="null"></option>
@@ -136,7 +136,7 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
           <label class="form-control-label" jhiTranslate="myTeacherApp.taskSolved.task" for="field_task">Task</label>
           <select class="form-control" id="field_task" data-cy="task" name="task" formControlName="task">
             <option [ngValue]="null"></option>
