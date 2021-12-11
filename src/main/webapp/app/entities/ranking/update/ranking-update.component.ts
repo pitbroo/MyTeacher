@@ -18,6 +18,7 @@ export class RankingUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     points: [],
+    nowa: [],
   });
 
   constructor(protected rankingService: RankingService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
@@ -65,6 +66,7 @@ export class RankingUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: ranking.id,
       points: ranking.points,
+      nowa: ranking.nowa,
     });
   }
 
@@ -73,6 +75,7 @@ export class RankingUpdateComponent implements OnInit {
       ...new Ranking(),
       id: this.editForm.get(['id'])!.value,
       points: this.editForm.get(['points'])!.value,
+      nowa: this.editForm.get(['nowa'])!.value,
     };
   }
 }

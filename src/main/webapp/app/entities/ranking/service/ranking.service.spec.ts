@@ -23,6 +23,7 @@ describe('Service Tests', () => {
       elemDefault = {
         id: 0,
         points: 0,
+        nowa: 'AAAAAAA',
       };
     });
 
@@ -59,6 +60,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             points: 1,
+            nowa: 'BBBBBB',
           },
           elemDefault
         );
@@ -73,7 +75,12 @@ describe('Service Tests', () => {
       });
 
       it('should partial update a Ranking', () => {
-        const patchObject = Object.assign({}, new Ranking());
+        const patchObject = Object.assign(
+          {
+            nowa: 'BBBBBB',
+          },
+          new Ranking()
+        );
 
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
@@ -91,6 +98,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             points: 1,
+            nowa: 'BBBBBB',
           },
           elemDefault
         );
@@ -142,7 +150,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Ranking to an array', () => {
-          const rankingArray: IRanking[] = [{ id: 123 }, { id: 456 }, { id: 80903 }];
+          const rankingArray: IRanking[] = [{ id: 123 }, { id: 456 }, { id: 52403 }];
           const rankingCollection: IRanking[] = [{ id: 123 }];
           expectedResult = service.addRankingToCollectionIfMissing(rankingCollection, ...rankingArray);
           expect(expectedResult).toHaveLength(3);

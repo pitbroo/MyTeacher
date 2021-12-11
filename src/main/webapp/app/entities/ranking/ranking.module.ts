@@ -7,11 +7,8 @@ import { RankingDeleteDialogComponent } from './delete/ranking-delete-dialog.com
 import { RankingRoutingModule } from './route/ranking-routing.module';
 
 @NgModule({
-    imports: [SharedModule, RankingRoutingModule],
-    declarations: [RankingComponent, RankingDetailComponent, RankingUpdateComponent, RankingDeleteDialogComponent],
-    entryComponents: [RankingDeleteDialogComponent],
-    exports: [
-        RankingComponent
-    ]
+  imports: [SharedModule, RankingRoutingModule],
+  declarations: [RankingComponent, RankingDetailComponent, RankingUpdateComponent, RankingDeleteDialogComponent],
+  entryComponents: [RankingDeleteDialogComponent],
 })
 export class RankingModule {}

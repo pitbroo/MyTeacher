@@ -3,7 +3,7 @@
     <span jhiTranslate="myTeacherApp.ranking.home.title">Rankings</span>
 
     <div class="d-flex justify-content-end">
-      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="myTeacherApp.ranking.home.refreshListLabel">Refresh List</span>
       </button>
@@ -31,9 +31,12 @@
   <div class="table-responsive" id="entities" *ngIf="rankings && rankings.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
-        <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.ranking.points">Points</span></th>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="points">
+            <span jhiTranslate="myTeacherApp.ranking.points">Points</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nowa"><span jhiTranslate="myTeacherApp.ranking.nowa">Nowa</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -43,8 +46,9 @@
             <a [routerLink]="['/ranking', ranking.id, 'view']">{{ ranking.id }}</a>
           </td>
           <td>{{ ranking.points }}</td>
+          <td>{{ ranking.nowa }}</td>
           <td class="text-right">
-            <div >
+            <div class="btn-group">
               <button
                 type="submit"
                 [routerLink]="['/ranking', ranking.id, 'view']"
@@ -52,7 +56,7 @@
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" >Otwórz</span>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
               <button
@@ -74,5 +78,23 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="rankings && rankings.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
   </div>
 </div>
