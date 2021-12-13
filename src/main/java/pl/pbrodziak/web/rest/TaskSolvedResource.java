@@ -1,23 +1,29 @@
 package pl.pbrodziak.web.rest;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pbrodziak.domain.TaskSolved;
+import pl.pbrodziak.domain.User;
+import pl.pbrodziak.repository.TaskRepository;
 import pl.pbrodziak.repository.TaskSolvedRepository;
+import pl.pbrodziak.repository.UserRepository;
+import pl.pbrodziak.security.SecurityUtils;
 import pl.pbrodziak.service.TaskSolvedQueryService;
 import pl.pbrodziak.service.TaskSolvedService;
 import pl.pbrodziak.service.criteria.TaskSolvedCriteria;
 import pl.pbrodziak.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * REST controller for managing {@link pl.pbrodziak.domain.TaskSolved}.
@@ -39,14 +45,20 @@ public class TaskSolvedResource {
 
     private final TaskSolvedQueryService taskSolvedQueryService;
 
+    private final TaskRepository taskRepository;
+
+    private final UserRepository userRepository;
+
     public TaskSolvedResource(
         TaskSolvedService taskSolvedService,
         TaskSolvedRepository taskSolvedRepository,
-        TaskSolvedQueryService taskSolvedQueryService
-    ) {
+        TaskSolvedQueryService taskSolvedQueryService,
+        TaskRepository taskRepository, UserRepository userRepository) {
         this.taskSolvedService = taskSolvedService;
         this.taskSolvedRepository = taskSolvedRepository;
         this.taskSolvedQueryService = taskSolvedQueryService;
+        this.taskRepository = taskRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -62,6 +74,18 @@ public class TaskSolvedResource {
         if (taskSolved.getId() != null) {
             throw new BadRequestAlertException("A new taskSolved cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if (SecurityUtils.getCurrentUserLogin().isPresent()
+            && SecurityUtils.hasCurrentUserThisAuthority("ROLE_USER")) {
+
+            String currnetUserLogin = SecurityUtils.getCurrentUserLogin().get();
+            if (userRepository.findOneByLogin(currnetUserLogin).isPresent()) {
+                User currnetUser = userRepository.findOneByLogin(currnetUserLogin).get();
+                taskSolved.setUser(currnetUser);
+                taskSolved.setSendDay(LocalDate.now());
+                taskSolved.setDeadline(taskRepository.findTaskById(taskSolved.getTask().getId()).getDeadline());
+                taskSolved.setPointGrade(taskRepository.findTaskById(taskSolved.getTask().getId()).getPointGrade());
+            }
+        }
         TaskSolved result = taskSolvedService.save(taskSolved);
         return ResponseEntity
             .created(new URI("/api/task-solveds/" + result.getId()))
@@ -72,7 +96,7 @@ public class TaskSolvedResource {
     /**
      * {@code PUT  /task-solveds/:id} : Updates an existing taskSolved.
      *
-     * @param id the id of the taskSolved to save.
+     * @param id         the id of the taskSolved to save.
      * @param taskSolved the taskSolved to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated taskSolved,
      * or with status {@code 400 (Bad Request)} if the taskSolved is not valid,
@@ -106,7 +130,7 @@ public class TaskSolvedResource {
     /**
      * {@code PATCH  /task-solveds/:id} : Partial updates given fields of an existing taskSolved, field will ignore if it is null
      *
-     * @param id the id of the taskSolved to save.
+     * @param id         the id of the taskSolved to save.
      * @param taskSolved the taskSolved to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated taskSolved,
      * or with status {@code 400 (Bad Request)} if the taskSolved is not valid,
