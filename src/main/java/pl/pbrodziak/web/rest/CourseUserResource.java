@@ -160,8 +160,9 @@ public class CourseUserResource {
      */
     @GetMapping("/course-users")
     public ResponseEntity<List<CourseUser>> getAllCourseUsers(CourseUserCriteria criteria) {
+
         log.debug("REST request to get CourseUsers by criteria: {}", criteria);
-        List<CourseUser> entityList = courseUserQueryService.findByCriteria(criteria);
+        List<CourseUser> entityList = courseUserService.findAllDependUser();
         return ResponseEntity.ok().body(entityList);
     }
 

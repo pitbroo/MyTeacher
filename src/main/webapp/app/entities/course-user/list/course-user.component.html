@@ -23,24 +23,45 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr>
-          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.courseUser.user">User</span></th>
-          <th scope="col"><span jhiTranslate="myTeacherApp.courseUser.course">Course</span></th>
-          <th scope="col"></th>
+          <th *jhiHasAnyAuthority="'ROLE_ADMIN'" scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span >ID ucznia</span></th>
+          <th scope="col"><span >Avatar</span></th>
+          <th scope="col">Imię</th>
+          <th scope="col">Nazwisko</th>
+          <th scope="col">Email</th>
+          <th scope="col"><span >Kurs</span></th>
+          <th scope="col">Liczba punktów</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let courseUser of courseUsers; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/course-user', courseUser.id, 'view']">{{ courseUser.id }}</a>
+          <td *jhiHasAnyAuthority="'ROLE_ADMIN'" >
+            <a  [routerLink]="['/course-user', courseUser.id, 'view']">{{ courseUser.id }}</a>
           </td>
           <td>
-            {{ courseUser.user?.id }}
+            {{ courseUser.id }}
+          </td>
+          <td *ngIf="courseUser.user?.imageUrl">
+             <span >
+            <img [src]="courseUser.user?.imageUrl" height="60px" class="profile-image rounded-circle" alt="Avatar" />
+          </span>
+          <td *ngIf="!courseUser.user?.imageUrl">
+          <td>
+            {{ courseUser.user?.firstName}}
+          </td>
+          <td>
+            {{ courseUser.user?.login}}
+          </td>
+          <td>
+            {{ courseUser.user?.email }}
           </td>
           <td>
             <div *ngIf="courseUser.course">
-              <a [routerLink]="['/course', courseUser.course?.id, 'view']">{{ courseUser.course?.id }}</a>
+              <a [routerLink]="['/course', courseUser.course?.id, 'view']">{{ courseUser.course?.name }}</a>
             </div>
+          </td>
+          <td>
+            {{ courseUser.user?.id }}
           </td>
           <td class="text-right">
             <div >

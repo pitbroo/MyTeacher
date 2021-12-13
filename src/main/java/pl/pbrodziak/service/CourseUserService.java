@@ -3,6 +3,7 @@ package pl.pbrodziak.service;
 import java.util.List;
 import java.util.Optional;
 import pl.pbrodziak.domain.CourseUser;
+import pl.pbrodziak.domain.User;
 
 /**
  * Service Interface for managing {@link CourseUser}.
@@ -45,4 +46,6 @@ public interface CourseUserService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<CourseUser> findAllDependUser();
 }

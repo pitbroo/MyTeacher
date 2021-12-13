@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { ICourseUser } from '../course-user.model';
-import { CourseUserService } from '../service/course-user.service';
-import { CourseUserDeleteDialogComponent } from '../delete/course-user-delete-dialog.component';
+import {ICourseUser} from '../course-user.model';
+import {CourseUserService} from '../service/course-user.service';
+import {CourseUserDeleteDialogComponent} from '../delete/course-user-delete-dialog.component';
+import {IUser} from "../../../admin/user-management/user-management.model";
 
 @Component({
   selector: 'jhi-course-user',
@@ -13,6 +14,7 @@ import { CourseUserDeleteDialogComponent } from '../delete/course-user-delete-di
 export class CourseUserComponent implements OnInit {
   courseUsers?: ICourseUser[];
   isLoading = false;
+
 
   constructor(protected courseUserService: CourseUserService, protected modalService: NgbModal) {}
 

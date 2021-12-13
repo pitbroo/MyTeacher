@@ -3,6 +3,7 @@ export interface IUser {
   login?: string;
   name?: string;
   surname?: string;
+  email?: string
 }
 
 export class User implements IUser {
@@ -10,7 +11,8 @@ export class User implements IUser {
     public id: number,
     public login: string,
     public name?: string,
-    public surname?: string
+    public surname?: string,
+    email?: string,
     ) {}
 }
 

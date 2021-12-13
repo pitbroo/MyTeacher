@@ -2,12 +2,15 @@ package pl.pbrodziak.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pbrodziak.domain.CourseUser;
+import pl.pbrodziak.domain.User;
 import pl.pbrodziak.repository.CourseUserRepository;
+import pl.pbrodziak.security.SecurityUtils;
 import pl.pbrodziak.service.CourseUserService;
 
 /**
@@ -63,5 +66,14 @@ public class CourseUserServiceImpl implements CourseUserService {
     public void delete(Long id) {
         log.debug("Request to delete CourseUser : {}", id);
         courseUserRepository.deleteById(id);
+    }
+
+    @Override
+    public List<CourseUser> findAllDependUser() {
+        if (SecurityUtils.hasCurrentUserThisAuthority("ROLE_TEACHER")) {
+            return courseUserRepository.findByInctructor();
+        } else {
+            return courseUserRepository.findAll();
+        }
     }
 }

@@ -14,4 +14,8 @@ public interface CourseUserRepository extends JpaRepository<CourseUser, Long>, J
     @Query("select courseUser from CourseUser courseUser where courseUser.user.login = ?#{principal.username}")
     List<CourseUser> findByUserIsCurrentUser();
 
+    @Query("select courseUser from CourseUser courseUser where courseUser.course.user.login = ?#{principal.username} order By courseUser.course")
+    List<CourseUser> findByInctructor();
+
 }
+

@@ -1,5 +1,6 @@
-import { IUser } from 'app/entities/user/user.model';
+
 import { ICourse } from 'app/entities/course/course.model';
+import {IUser} from "../../admin/user-management/user-management.model";
 
 export interface ICourseUser {
   id?: number;
