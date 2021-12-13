@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,8 @@ import { TaskService } from 'app/entities/task/service/task.service';
 })
 export class TaskSolvedUpdateComponent implements OnInit {
   isSaving = false;
-
+  @Input()
+  currentTask?: ITask;
   usersSharedCollection: IUser[] = [];
   tasksSharedCollection: ITask[] = [];
 
