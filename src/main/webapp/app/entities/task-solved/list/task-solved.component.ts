@@ -6,6 +6,7 @@ import { ITaskSolved } from '../task-solved.model';
 import { TaskSolvedService } from '../service/task-solved.service';
 import { TaskSolvedDeleteDialogComponent } from '../delete/task-solved-delete-dialog.component';
 import { DataUtils } from 'app/core/util/data-util.service';
+import {ITask} from "../../task/task.model";
 
 @Component({
   selector: 'jhi-task-solved',
@@ -15,14 +16,15 @@ export class TaskSolvedComponent implements OnInit {
   taskSolveds?: ITaskSolved[];
   isLoading = false;
   @Input()
-  taskId?: any = "";
+  task?: ITask;
 
   constructor(protected taskSolvedService: TaskSolvedService, protected dataUtils: DataUtils, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.isLoading = true;
-
-    this.taskSolvedService.query(this.taskId).subscribe(
+    let id;
+    this.task?.id !== undefined ? id = this.task.id : id = 0;
+    this.taskSolvedService.query(this.task?.id).subscribe(
       (res: HttpResponse<ITaskSolved[]>) => {
         this.isLoading = false;
         this.taskSolveds = res.body ?? [];
