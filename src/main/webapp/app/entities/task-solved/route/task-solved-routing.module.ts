@@ -22,12 +22,13 @@ const taskSolvedRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
-    path: 'new',
+    path: 'new/:taskId',
     component: TaskSolvedUpdateComponent,
     resolve: {
       taskSolved: TaskSolvedRoutingResolveService,
     },
     canActivate: [UserRouteAccessService],
+    data: {id: "sahjdbash"}
   },
   {
     path: ':id/edit',

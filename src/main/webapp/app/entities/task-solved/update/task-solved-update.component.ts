@@ -21,10 +21,10 @@ import { TaskService } from 'app/entities/task/service/task.service';
 })
 export class TaskSolvedUpdateComponent implements OnInit {
   isSaving = false;
-  @Input()
-  currentTask?: ITask;
   usersSharedCollection: IUser[] = [];
   tasksSharedCollection: ITask[] = [];
+  taskId?: number;
+  paramSub?: any;
 
   editForm = this.fb.group({
     id: [],
@@ -54,7 +54,12 @@ export class TaskSolvedUpdateComponent implements OnInit {
       this.updateForm(taskSolved);
 
       this.loadRelationshipsOptions();
+      this.paramSub = this.activatedRoute.params.subscribe(
+        params => this.taskId = parseInt(params['taskId'], 10));
     });
+  }
+  ngOnDestroy(): void {
+    this.paramSub.unsubscribe();
   }
 
   byteSize(base64String: string): string {
@@ -157,7 +162,12 @@ export class TaskSolvedUpdateComponent implements OnInit {
       attachmentContentType: this.editForm.get(['attachmentContentType'])!.value,
       attachment: this.editForm.get(['attachment'])!.value,
       user: this.editForm.get(['user'])!.value,
-      task: this.editForm.get(['task'])!.value,
+      // task: this.editForm.get(['task'])!.value,
+      task: this.getTaskById(this.taskId),
     };
+  }
+
+  private getTaskById(taskId: number | undefined): ITask | undefined {
+    return this.tasksSharedCollection.find(task => task.id === taskId);
   }
 }
