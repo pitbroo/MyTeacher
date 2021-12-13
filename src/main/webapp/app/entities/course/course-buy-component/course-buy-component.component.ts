@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {ICourse} from "../course.model";
 import {CourseService} from "../service/course.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";

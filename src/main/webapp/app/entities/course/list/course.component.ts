@@ -6,7 +6,7 @@ import {ICourse} from '../course.model';
 import {CourseService} from '../service/course.service';
 import {CourseDeleteDialogComponent} from '../delete/course-delete-dialog.component';
 import {CourseUserService} from "../../course-user/service/course-user.service";
-import {CourseUser, ICourseUser} from '../../course-user/course-user.model';
+import {CourseUser} from '../../course-user/course-user.model';
 import {CourseBuyComponentComponent} from "../course-buy-component/course-buy-component.component";
 
 @Component({
@@ -70,7 +70,7 @@ export class CourseComponent implements OnInit {
       if(reason === 'save'){
         const courseUser = new CourseUser();
         courseUser.course = course;
-        this.courseUserService.create(courseUser).subscribe((x)=> {
+        this.courseUserService.create(courseUser).subscribe(()=> {
           this.loadAll();
         });
       }

@@ -14,12 +14,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.title" for="field_title">Title</label>
+          <label class="form-control-label"  for="field_title">Tytuł</label>
           <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.pointGrade" for="field_pointGrade">Point Grade</label>
+          <label class="form-control-label"  for="field_pointGrade">Punkty</label>
           <input
             type="number"
             class="form-control"
@@ -31,12 +31,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.content" for="field_content">Content</label>
+          <label class="form-control-label" jhiTranslate="myTeacherApp.task.content" for="field_content">Treść</label>
           <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.deadline" for="field_deadline">Deadline</label>
+          <label class="form-control-label"  for="field_deadline">Deadline</label>
           <div class="input-group">
             <input
               id="field_deadline"
@@ -55,14 +55,14 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.attachment" for="field_attachment">Attachment</label>
+          <label class="form-control-label" for="field_attachment">Załącznik</label>
           <div>
             <div *ngIf="editForm.get('attachment')!.value" class="form-text text-danger clearfix">
               <a
                 class="pull-left"
                 (click)="openFile(editForm.get('attachment')!.value, editForm.get('attachmentContentType')!.value)"
                 jhiTranslate="entity.action.open"
-                >open</a
+                >Otwórz</a
               ><br />
               <span class="pull-left"
                 >{{ editForm.get('attachmentContentType')!.value }}, {{ byteSize(editForm.get('attachment')!.value) }}</span
@@ -101,14 +101,14 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="myTeacherApp.task.lesson" for="field_lesson">Lesson</label>
+          <label class="form-control-label"  for="field_lesson">Lekcja</label>
           <select class="form-control" id="field_lesson" data-cy="lesson" name="lesson" formControlName="lesson">
             <option [ngValue]="null"></option>
             <option
               [ngValue]="lessonOption.id === editForm.get('lesson')!.value?.id ? editForm.get('lesson')!.value : lessonOption"
               *ngFor="let lessonOption of lessonsSharedCollection; trackBy: trackLessonById"
             >
-              {{ lessonOption.id }}
+              {{ lessonOption.name}} ({{lessonOption.course?.name}})
             </option>
           </select>
         </div>

@@ -1,19 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {HttpResponse} from '@angular/common/http';
+import {FormBuilder} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {finalize, map} from 'rxjs/operators';
 
-import { ITaskSolved, TaskSolved } from '../task-solved.model';
-import { TaskSolvedService } from '../service/task-solved.service';
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { IUser } from 'app/entities/user/user.model';
-import { UserService } from 'app/entities/user/user.service';
-import { ITask } from 'app/entities/task/task.model';
-import { TaskService } from 'app/entities/task/service/task.service';
+import {ITaskSolved, TaskSolved} from '../task-solved.model';
+import {TaskSolvedService} from '../service/task-solved.service';
+import {AlertError} from 'app/shared/alert/alert-error.model';
+import {EventManager, EventWithContent} from 'app/core/util/event-manager.service';
+import {DataUtils, FileLoadError} from 'app/core/util/data-util.service';
+import {IUser} from 'app/entities/user/user.model';
+import {UserService} from 'app/entities/user/user.service';
+import {ITask} from 'app/entities/task/task.model';
+import {TaskService} from 'app/entities/task/service/task.service';
 
 @Component({
   selector: 'jhi-task-solved-update',
@@ -47,10 +47,11 @@ export class TaskSolvedUpdateComponent implements OnInit {
     protected taskService: TaskService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ taskSolved }) => {
+    this.activatedRoute.data.subscribe(({taskSolved}) => {
       this.updateForm(taskSolved);
 
       this.loadRelationshipsOptions();
@@ -73,7 +74,10 @@ export class TaskSolvedUpdateComponent implements OnInit {
   setFileData(event: Event, field: string, isImage: boolean): void {
     this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
       error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('myTeacherApp.error', { ...err, key: 'error.file.' + err.key })),
+        this.eventManager.broadcast(new EventWithContent<AlertError>('myTeacherApp.error', {
+          ...err,
+          key: 'error.file.' + err.key
+        })),
     });
   }
 

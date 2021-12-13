@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'jhi-siadnavbar',
@@ -6,10 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./siadnavbar.component.scss']
 })
 export class SiadnavbarComponent {
-
-  // constructor() { }
-  //
-  // ngOnInit(): void {
-  // }
 
 }

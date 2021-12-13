@@ -22,8 +22,6 @@ export class TaskSolvedComponent implements OnInit {
 
   loadAll(): void {
     this.isLoading = true;
-    let id;
-    this.task?.id !== undefined ? id = this.task.id : id = 0;
     this.taskSolvedService.query(this.task?.id).subscribe(
       (res: HttpResponse<ITaskSolved[]>) => {
         this.isLoading = false;

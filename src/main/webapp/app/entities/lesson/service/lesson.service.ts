@@ -48,7 +48,6 @@ export class LessonService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    //(courseName === null || courseName === undefined) ? courseName="" : courseName;
     return this.http
       .get<ILesson[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));

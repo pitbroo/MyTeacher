@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="acd55d26-855a-499f-9c42-767234b12f1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/repository/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/TaskSolvedResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/TaskSolvedResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/detail/course-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/detail/course-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/course/list/course.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/course/list/course.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/service/lesson.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/lesson/service/lesson.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/update/task-solved-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task-solved/update/task-solved-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task/task.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task/task.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/task/update/task-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/task/update/task-update.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +99,7 @@
       <workItem from="1638265047004" duration="8207000" />
       <workItem from="1638287286528" duration="61000" />
       <workItem from="1638287478625" duration="63141000" />
-      <workItem from="1639412819911" duration="3685000" />
+      <workItem from="1639412819911" duration="6426000" />
     </task>
     <servers />
   </component>
@@ -119,11 +123,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/LessonResource.java</url>
           <line>154</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/pbrodziak/web/rest/TaskSolvedResource.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
